@@ -1,0 +1,1 @@
+{"version":3,"file":"AuthProvider.d.ts","sourceRoot":"","sources":["../../src/hooks/AuthProvider.tsx"],"names":[],"mappings":"AAKA,OAAO,EAAE,aAAa,EAAE,MAAM,OAAO,CAAA;AAGrC;;;;;;;;;;;;;;;;;;;;GAoBG;AACH,eAAO,MAAM,YAAY,GAAI,mBAAmB;IAC5C,GAAG,EAAE,aAAa,CAAA;IAClB,QAAQ,EAAE,KAAK,CAAC,SAAS,CAAA;CAC5B,4CAiDA,CAAA"}

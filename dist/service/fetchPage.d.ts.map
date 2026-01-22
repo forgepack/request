@@ -1,0 +1,1 @@
+{"version":3,"file":"fetchPage.d.ts","sourceRoot":"","sources":["../../src/service/fetchPage.tsx"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAE,MAAM,OAAO,CAAA;AACrC,OAAO,EAAE,IAAI,EAAE,MAAM,uBAAuB,CAAA;AAC5C,OAAO,EAAE,MAAM,EAAE,MAAM,sBAAsB,CAAA;AAE7C,eAAO,MAAM,SAAS,GAAU,KAAK,aAAa,EAAE,UAAU,MAAM,EAAE,SAAS,MAAM,EAAE,SAAS,WAAW,KAAG,OAAO,CAAC,IAAI,CAkBzH,CAAA"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"useRequest.d.ts","sourceRoot":"","sources":["../../src/hook/useRequest.tsx"],"names":[],"mappings":"AACA,OAAO,EAAE,YAAY,EAAuB,MAAM,2BAA2B,CAAA;AAC7E,OAAO,EAAe,IAAI,EAAE,MAAM,uBAAuB,CAAA;AACzD,OAAO,EAAE,MAAM,EAAE,MAAM,sBAAsB,CAAA;AAE7C,OAAO,EAAE,aAAa,EAAE,MAAM,OAAO,CAAA;AAErC,eAAO,MAAM,UAAU,GAAI,KAAK,aAAa,EAAE,UAAU,MAAM,EAAE,SAAS,MAAM;;;;;CA8B/E,CAAA"}

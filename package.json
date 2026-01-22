@@ -1,0 +1,40 @@
+{
+    "name": "@hidrografico/request",
+    "version": "1.0.3",
+    "description": "",
+    "homepage": "https://github.com/hidrografico/request#readme",
+    "bugs": {
+        "url": "https://github.com/hidrografico/request/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hidrografico/request.git"
+    },
+    "license": "Apache License 2.0",
+    "keywords": [
+        "palavra-chave1",
+        "palavra-chave2"
+    ],
+    "author": "Marcelo Gadelha",
+    "type": "commonjs",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "peerDependencies": {
+        "react": "^19.2.3",
+        "react-router-dom": "^7.12.0"
+    },
+    "devDependencies": {
+        "@types/react": "^19.2.9",
+        "typescript": "^5.9.3"
+    },
+    "dependencies": {
+        "axios": "^1.13.2"
+    }
+}
