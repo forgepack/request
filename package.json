@@ -6,6 +6,9 @@
     "bugs": {
         "url": "https://github.com/forgepack/request/issues"
     },
+    "publishConfig": {
+        "@forgepack:registry": "https://npm.pkg.github.com"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/forgepack/request.git"

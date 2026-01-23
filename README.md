@@ -52,6 +52,10 @@ npm version minor  # 1.0.0 -> 1.1.0
 npm version major  # 1.0.0 -> 2.0.0
 
 npm publish
+# Publicar no npm
+npm publish --registry=https://npm.pkg.github.com
+# Publicar no github
+npm publish --registry=https://registry.npmjs.org
 ```
 
 ## Publish at
