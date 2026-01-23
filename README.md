@@ -1,32 +1,32 @@
 # _Request_
 
-![github](https://img.shields.io/github/stars/institutohidrografico/leaflet-toolkit "Github")
+![github](https://img.shields.io/github/stars/forgepack/request "Github")
 	
 ![Node.js](https://img.shields.io/badge/Node.js-22.20.0-339933?logo=node.js)
 ![npm](https://img.shields.io/badge/npm-11.6.2-CB3837?logo=npm)
 ![React](https://img.shields.io/badge/React-19.2.0-blue?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue?logo=typescript)
 
-## Inicializar o projeto
+## Start a new project
 
 ```bash
-mkdir meu-pacote
-cd meu-pacote
+mkdir package-name
+cd package-name
 npm init
 ```
 
-> Arquivo .json criado:
+> .json file created:
 ```json
 {
-  "name": "meu-pacote-unico",
+  "name": "package-name",
   "version": "1.0.0",
-  "description": "Descrição do pacote",
+  "description": "Package Description",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["palavra-chave1", "palavra-chave2"],
-  "author": "Seu Nome",
+  "author": "Name",
   "license": "MIT"
 }
 ```
@@ -95,23 +95,23 @@ function App() {
 - **🔑 Gerenciamento de Tokens** - Validação e decodificação automática
 - **📱 Responsivo** - Estados de loading, erro e paginação
 
-### 📚 **Documentação Completa**
+### 📚 **Complete Documentation**
 
-Para exemplos detalhados, guias de uso e referência da API, acesse:
-**[Documentação Completa](./docs/README.md)**
+For detailed examples, usage guides, and API references, please visit:
+**[Complete Documentation](./docs/README.md)**
 
-### 🎯 **Exemplo Rápido**
+### 🎯 **Quick Example**
 
 ```tsx
-// Hook de autenticação
+// Authentication hook
 const { loginUser, isAuthenticated, role } = useAuth()
 
-// Hook para requisições paginadas
+// Hook for paginated requests
 const { response, loading, error } = useRequest(api, 'users', {
   page: 0, size: 10, value: 'busca'
 })
 
-// Proteção de rotas
+// Route protection
 <RequireAuth allowedRoles={['ADMIN']}>
   <AdminPanel />
 </RequireAuth>

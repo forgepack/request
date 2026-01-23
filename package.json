@@ -1,19 +1,36 @@
 {
-    "name": "@hidrografico/request",
-    "version": "1.0.3",
+    "name": "@forgepack/request",
+    "version": "1.0.4",
     "description": "",
-    "homepage": "https://github.com/hidrografico/request#readme",
+    "homepage": "https://github.com/forgepack/request#readme",
     "bugs": {
-        "url": "https://github.com/hidrografico/request/issues"
+        "url": "https://github.com/forgepack/request/issues"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/hidrografico/request.git"
+        "url": "git+https://github.com/forgepack/request.git"
     },
-    "license": "Apache License 2.0",
+    "license": "MIT License",
     "keywords": [
-        "palavra-chave1",
-        "palavra-chave2"
+        "react",
+        "frontend",
+        "admin",
+        "admin-dashboard",
+        "internal-tools",
+        "crud",
+        "authenticated-crud",
+        "datatable",
+        "data-table",
+        "modal",
+        "sidebar",
+        "layout",
+        "api-client",
+        "authentication",
+        "authorization",
+        "boilerplate",
+        "application-kit",
+        "react-admin",
+        "react-crud"
     ],
     "author": "Marcelo Gadelha",
     "type": "commonjs",
