@@ -1,8 +1,8 @@
 # _Request_
 
 [![GitHub stars](https://img.shields.io/github/stars/forgepack/request?style=social)](https://github.com/forgepack/request)
-	
-![Node.js](https://img.shields.io/badge/Node.js-22.20.0-339933?logo=node.js)
+
+![Node.js](https://img.shields.io/badge/Node.js-24.13.0-339933?logo=node.js)
 ![npm](https://img.shields.io/badge/npm-11.6.2-CB3837?logo=npm)
 ![React](https://img.shields.io/badge/React-19.2.0-blue?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue?logo=typescript)
@@ -58,7 +58,7 @@ npm publish --registry=https://npm.pkg.github.com
 npm publish --registry=https://registry.npmjs.org
 ```
 
-## Publish at
+## Publicar em:
 ```bash
 https://github.com/forgepack
 https://www.npmjs.com/org/forgepack
@@ -67,9 +67,9 @@ https://codesandbox.io/
 https://stackblitz.com/
 ```
 
-## Uso pelo consumidor (Vite, React, Next, Node, etc.)
+## Consumer use (Vite, React, Next, Node, etc.)
 
-### 📦 **Instalação**
+### 📦 **Installation**
 
 ```bash
 npm install @forgepack/request
@@ -78,16 +78,16 @@ npm install @forgepack/request
 ### ⚙️ **Configuração Básica**
 
 ```typescript
-// 1. Configure o cliente da API
+// 1. Configure the API client
 import { createApiClient } from "@forgepack/request"
 
 export const api = createApiClient({
-  baseURL: "https://api.meuservico.com",
+  baseURL: "https://api.service.com",
   onUnauthorized: () => window.location.href = "/login",
   onForbidden: () => window.location.href = "/notAllowed"
 })
 
-// 2. Configure o provedor de autenticação
+// 2. Configure the authentication provider
 import { AuthProvider } from '@forgepack/request'
 
 function App() {
@@ -99,14 +99,14 @@ function App() {
 }
 ```
 
-### 🚀 **Principais Recursos**
+### 🚀 **Key Features**
 
-- **🔐 Autenticação JWT** - Login automático com interceptors
-- **🛡️ Proteção de Rotas** - Componente `RequireAuth` baseado em roles
-- **📊 Hook de Requisições** - `useRequest` com paginação e busca
-- **⚡ Operações CRUD** - Funções prontas para create, read, update, delete
-- **🔑 Gerenciamento de Tokens** - Validação e decodificação automática
-- **📱 Responsivo** - Estados de loading, erro e paginação
+- **🔐 Autenticação JWT** - Automatic login with interceptors
+- **🛡️ Route Protection** - Role-based `RequireAuth` component
+- **📊 Request Hook** - `useRequest` with pagination and search
+- **⚡ CRUD Operations** - Ready-to-use functions for create, read, update, delete.
+- **🔑 Token Management** - Automatic validation and decoding
+- **📱 Responsive** - Loading, error, and pagination states
 
 ### 📚 **Complete Documentation**
 
@@ -120,8 +120,8 @@ For detailed examples, usage guides, and API references, please visit:
 const { loginUser, isAuthenticated, role } = useAuth()
 
 // Hook for paginated requests
-const { response, loading, error } = useRequest(api, 'users', {
-  page: 0, size: 10, value: 'busca'
+const { response, loading, error } = useRequest(api, 'resource', {
+  page: 0, size: 10, value: 'search'
 })
 
 // Route protection
