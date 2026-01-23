@@ -1,7 +1,6 @@
 # _Request_
 
-![github](https://img.shields.io/github/stars/forgepack/request "Github")
-![github](https://img.shields.io/github/stars/gadelhati/maps-front "Github")
+[![GitHub stars](https://img.shields.io/github/stars/forgepack/request?style=social)](https://github.com/forgepack/request)
 	
 ![Node.js](https://img.shields.io/badge/Node.js-22.20.0-339933?logo=node.js)
 ![npm](https://img.shields.io/badge/npm-11.6.2-CB3837?logo=npm)
@@ -53,6 +52,15 @@ npm version minor  # 1.0.0 -> 1.1.0
 npm version major  # 1.0.0 -> 2.0.0
 
 npm publish
+```
+
+## Publish at
+```bash
+https://github.com/forgepack
+https://www.npmjs.com/org/forgepack
+https://dev.to/
+https://codesandbox.io/
+https://stackblitz.com/
 ```
 
 ## Uso pelo consumidor (Vite, React, Next, Node, etc.)
