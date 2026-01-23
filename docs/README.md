@@ -1,4 +1,4 @@
-# Documentação - @hidrografico/request
+# Documentação - @forgepack/request
 
 Documentação completa do pacote React para gerenciamento de requisições HTTP com autenticação JWT.
 

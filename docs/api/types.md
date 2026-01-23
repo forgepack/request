@@ -250,7 +250,7 @@ import type {
   Search, 
   Page,
   AuthContextType 
-} from '@hidrografico/request'
+} from '@forgepack/request'
 
 // Propriedades de componente
 interface UserListProps {

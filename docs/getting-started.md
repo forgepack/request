@@ -3,11 +3,11 @@
 ## 📦 Instalação
 
 ```bash
-npm install @hidrografico/request
+npm install @forgepack/request
 # ou
-yarn add @hidrografico/request
+yarn add @forgepack/request
 # ou  
-pnpm add @hidrografico/request
+pnpm add @forgepack/request
 ```
 
 ## ⚙️ Configuração Inicial
@@ -18,7 +18,7 @@ Primeiro, configure o cliente Axios com interceptors automáticos:
 
 ```typescript
 // src/services/api.ts
-import { createApiClient } from "@hidrografico/request"
+import { createApiClient } from "@forgepack/request"
 
 export const api = createApiClient({
   baseURL: "https://api.meuservico.com",
@@ -43,7 +43,7 @@ Configure o `AuthProvider` na raiz da sua aplicação:
 // src/App.tsx
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import { AuthProvider } from '@hidrografico/request'
+import { AuthProvider } from '@forgepack/request'
 import { api } from './services/api'
 import { AppRoutes } from './routes'
 
@@ -65,7 +65,7 @@ export default App
 ```tsx
 // pages/_app.tsx
 import type { AppProps } from 'next/app'
-import { AuthProvider, createApiClient } from '@hidrografico/request'
+import { AuthProvider, createApiClient } from '@forgepack/request'
 
 const api = createApiClient({
   baseURL: process.env.NEXT_PUBLIC_API_URL!,
@@ -90,7 +90,7 @@ export default function App({ Component, pageProps }: AppProps) {
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import { AuthProvider, createApiClient } from '@hidrografico/request'
+import { AuthProvider, createApiClient } from '@forgepack/request'
 import App from './App.tsx'
 
 const api = createApiClient({
@@ -139,7 +139,7 @@ Teste se a configuração está funcionando:
 
 ```tsx
 // src/components/TestComponent.tsx
-import { useAuth } from '@hidrografico/request'
+import { useAuth } from '@forgepack/request'
 
 export const TestComponent = () => {
   const { isAuthenticated } = useAuth()

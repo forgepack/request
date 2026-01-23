@@ -68,14 +68,14 @@ https://stackblitz.com/
 ### 📦 **Instalação**
 
 ```bash
-npm install @hidrografico/request
+npm install @forgepack/request
 ```
 
 ### ⚙️ **Configuração Básica**
 
 ```typescript
 // 1. Configure o cliente da API
-import { createApiClient } from "@hidrografico/request"
+import { createApiClient } from "@forgepack/request"
 
 export const api = createApiClient({
   baseURL: "https://api.meuservico.com",
@@ -84,7 +84,7 @@ export const api = createApiClient({
 })
 
 // 2. Configure o provedor de autenticação
-import { AuthProvider } from '@hidrografico/request'
+import { AuthProvider } from '@forgepack/request'
 
 function App() {
   return (

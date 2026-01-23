@@ -19,7 +19,7 @@ Hook principal para gerenciamento de autenticação.
 ### Exemplo
 
 ```tsx
-import { useAuth } from '@hidrografico/request'
+import { useAuth } from '@forgepack/request'
 
 const { loginUser, logoutUser, isAuthenticated, role } = useAuth()
 ```
@@ -50,7 +50,7 @@ Hook para requisições HTTP paginadas com gerenciamento automático de estado.
 ### Exemplo
 
 ```tsx
-import { useRequest } from '@hidrografico/request'
+import { useRequest } from '@forgepack/request'
 import { api } from '../services/api'
 
 const { response, error, loading, request } = useRequest(api, 'users', {
@@ -96,7 +96,7 @@ Exemplo de hook personalizado usando o pacote:
 
 ```tsx
 // src/hooks/useAuthStatus.ts
-import { useAuth, isValidToken } from '@hidrografico/request'
+import { useAuth, isValidToken } from '@forgepack/request'
 
 export const useAuthStatus = () => {
   const auth = useAuth()

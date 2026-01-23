@@ -5,7 +5,7 @@
 ```tsx
 // src/components/LoginForm.tsx
 import React, { useState } from 'react'
-import { useAuth } from '@hidrografico/request'
+import { useAuth } from '@forgepack/request'
 
 export const LoginForm = () => {
   const { loginUser, isAuthenticated, role } = useAuth()
@@ -110,7 +110,7 @@ export const LoginForm = () => {
 // src/components/StyledLoginForm.tsx
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { useAuth } from '@hidrografico/request'
+import { useAuth } from '@forgepack/request'
 
 const LoginContainer = styled.div`
   max-width: 400px;
@@ -234,7 +234,7 @@ export const StyledLoginForm = () => {
 // src/components/HookFormLogin.tsx
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { useAuth } from '@hidrografico/request'
+import { useAuth } from '@forgepack/request'
 
 interface LoginData {
   username: string
@@ -336,7 +336,7 @@ export const HookFormLogin = () => {
 ```tsx
 // src/components/MobileLoginForm.tsx
 import React, { useState } from 'react'
-import { useAuth } from '@hidrografico/request'
+import { useAuth } from '@forgepack/request'
 
 export const MobileLoginForm = () => {
   const { loginUser } = useAuth()
