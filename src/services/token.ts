@@ -3,10 +3,10 @@ import { initialAuth, initialHeader, initialPayload } from '../utils/constants'
 import { Header, Payload } from '../types/token'
 
 /**
- * Verifica se uma string é um JSON válido
+ * Verifies if a string is valid JSON
  * 
- * @param json - String a ser verificada
- * @returns true se for JSON válido, false caso contrário
+ * @param json - String to be verified
+ * @returns true if valid JSON, false otherwise
  */
 const isValidJSON = (json: string) => {
     try {
@@ -18,16 +18,16 @@ const isValidJSON = (json: string) => {
 }
 
 /**
- * Verifica se o token JWT atual é válido e não expirado
+ * Verifies if the current JWT token is valid and not expired
  * 
- * @returns true se o token for válido e não expirado, false caso contrário
+ * @returns true if token is valid and not expired, false otherwise
  * 
  * @example
  * ```typescript
  * if (isValidToken()) {
- *   // Usuário autenticado
+ *   // User authenticated
  * } else {
- *   // Redirecionar para login
+ *   // Redirect to login
  * }
  * ```
  */
@@ -46,9 +46,9 @@ export const isValidToken = (): boolean => {
 }
 
 /**
- * Recupera o token JWT armazenado no localStorage
+ * Retrieves the JWT token stored in localStorage
  * 
- * @returns Objeto Auth com dados do token ou estado inicial se inválido
+ * @returns Auth object with token data or initial state if invalid
  * 
  * @example
  * ```typescript
@@ -62,9 +62,9 @@ export const getToken = (): Auth => {
 }
 
 /**
- * Armazena o token JWT no localStorage
+ * Stores the JWT token in localStorage
  * 
- * @param token - Dados de autenticação a serem armazenados
+ * @param token - Authentication data to be stored
  * 
  * @example
  * ```typescript
@@ -81,11 +81,11 @@ export const setToken = (token: any): void => {
 }
 
 /**
- * Remove o token JWT do localStorage
+ * Removes the JWT token from localStorage
  * 
  * @example
  * ```typescript
- * removeToken() // Usuário será deslogado
+ * removeToken() // User will be logged out
  * ```
  */
 export const removeToken = () => {
@@ -93,15 +93,15 @@ export const removeToken = () => {
 }
 
 /**
- * Decodifica e retorna o payload do token JWT
+ * Decodes and returns the JWT token payload
  * 
- * @returns Objeto Payload com informações do token ou estado inicial se inválido
+ * @returns Payload object with token information or initial state if invalid
  * 
  * @example
  * ```typescript
  * const payload = getPayload()
- * console.log(payload.exp) // Data de expiração
- * console.log(payload.sub) // Subject (ID do usuário)
+ * console.log(payload.exp) // Expiration date
+ * console.log(payload.sub) // Subject (user ID)
  * ```
  */
 export const getPayload = (): Payload => {
@@ -127,10 +127,10 @@ export const getPayload = (): Payload => {
 }
 
 /**
- * Decodifica o token JWT e retorna o payload como string
+ * Decodes the JWT token and returns the payload as string
  * 
- * @deprecated Use getPayload() para uma abordagem mais segura
- * @returns String com payload decodificado ou null se inválido
+ * @deprecated Use getPayload() for a safer approach
+ * @returns String with decoded payload or null if invalid
  */
 export const decodeJwt = () => {
     if (getToken() !== null) {
@@ -145,15 +145,15 @@ export const decodeJwt = () => {
 }
 
 /**
- * Decodifica e retorna o cabeçalho do token JWT
+ * Decodes and returns the JWT token header
  * 
- * @returns Objeto Header com informações do cabeçalho ou estado inicial se inválido
+ * @returns Header object with header information or initial state if invalid
  * 
  * @example
  * ```typescript
  * const header = getHeader()
- * console.log(header.alg) // Algoritmo usado
- * console.log(header.typ) // Tipo do token
+ * console.log(header.alg) // Algorithm used
+ * console.log(header.typ) // Token type
  * ```
  */
 export const getHeader = (): Header => {

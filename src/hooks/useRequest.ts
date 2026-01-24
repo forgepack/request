@@ -7,18 +7,18 @@ import { fetchPage } from '../services/api'
 import { AxiosInstance } from 'axios'
 
 /**
- * Hook React para gerenciamento de requisições HTTP paginadas com estado
+ * React hook for managing paginated HTTP requests with state
  * 
- * Funcionalidades:
- * - Gerencia estado de loading, dados e erros
- * - Suporte a paginação e busca
- * - Cancelamento automático de requisições pendentes
- * - Re-execução automática quando parâmetros mudam
+ * Features:
+ * - Manages loading, data and error state
+ * - Supports pagination and search
+ * - Automatic cancellation of pending requests
+ * - Automatic re-execution when parameters change
  * 
- * @param api - Instância configurada do Axios
- * @param endpoint - Endpoint da API (sem barra inicial)
- * @param search - Parâmetros opcionais de busca e paginação
- * @returns Objeto contendo response, error, loading e função request
+ * @param api - Configured Axios instance
+ * @param endpoint - API endpoint (without leading slash)
+ * @param search - Optional search and pagination parameters
+ * @returns Object containing response, error, loading and request function
  * 
  * @example
  * ```typescript
@@ -28,7 +28,7 @@ import { AxiosInstance } from 'axios'
  *   { page: 0, size: 10, value: 'search term' }
  * )
  * 
- * // Re-executar manualmente
+ * // Re-execute manually
  * await request()
  * ```
  */

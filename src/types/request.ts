@@ -1,25 +1,25 @@
 /**
- * Interface que define os parâmetros de ordenação
+ * Interface defining sort parameters
  * @interface Sort
  */
 export interface Sort {
-    /** Campo pelo qual ordenar */
+    /** Field to sort by */
     key: string,
-    /** Direção da ordenação */
+    /** Sort direction */
     order: 'ASC' | 'DESC'
 }
 
 /**
- * Interface que define os parâmetros de busca e paginação
+ * Interface defining search and pagination parameters
  * @interface Search
  */
 export interface Search {
-    /** Termo de busca/filtro */
+    /** Search/filter term */
     value?: string,
-    /** Número da página (baseado em zero) */
+    /** Page number (zero-based) */
     page?: number,
-    /** Quantidade de itens por página */
+    /** Number of items per page */
     size?: number,
-    /** Configuração de ordenação */
+    /** Sort configuration */
     sort?: Sort
 }

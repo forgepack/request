@@ -1,10 +1,10 @@
 /**
- * Interface que representa uma mensagem de erro de validação
+ * Interface representing a validation error message
  * @interface ErrorMessage
  */
 export interface ErrorMessage {
-    /** Nome do campo que contém o erro */
+    /** Name of the field containing the error */
     field: string,
-    /** Mensagem descritiva do erro */
+    /** Descriptive error message */
     message: string
 }

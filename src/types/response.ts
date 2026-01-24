@@ -1,42 +1,42 @@
 /**
- * Interface que representa as informações de paginação
+ * Interface representing pagination information
  * @interface PageInfo
  */
 export interface PageInfo {
-    /** Tamanho da página atual */
+    /** Current page size */
     size: number,
-    /** Número da página atual */
+    /** Current page number */
 	number: number,
-    /** Total de elementos em todas as páginas */
+    /** Total elements across all pages */
 	totalElements: number,
-    /** Total de páginas disponíveis */
+    /** Total available pages */
 	totalPages: number
 }
 
 /**
- * Interface genérica que representa uma resposta paginada da API
- * @template T Tipo dos elementos contidos na página
+ * Generic interface representing a paginated API response
+ * @template T Type of elements contained in the page
  * @interface Page
  */
 export interface Page<T = unknown> {
-    /** Array com os elementos da página atual */
+    /** Array with current page elements */
 	content: T[],
-    /** Informações de paginação */
+    /** Pagination information */
 	page: PageInfo
 }
 
 /**
- * Interface para respostas de API genéricas
- * @template T Tipo dos dados retornados
+ * Interface for generic API responses
+ * @template T Type of returned data
  * @interface ApiResponse
  */
 export interface ApiResponse<T = unknown> {
-    /** Indica se a operação foi bem-sucedida */
+    /** Indicates if the operation was successful */
     success: boolean,
-    /** Dados retornados (se sucesso) */
+    /** Returned data (if successful) */
     data?: T,
-    /** Mensagem de resposta */
+    /** Response message */
     message?: string,
-    /** Erros de validação (se falha) */
+    /** Validation errors (if failed) */
     errors?: Array<{ field: string; message: string }>
 }

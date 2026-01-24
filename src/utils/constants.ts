@@ -5,7 +5,7 @@ import { Page, PageInfo } from '../types/response'
 import { Header, Payload } from '../types/token'
 
 /**
- * Estado inicial vazio para dados de autenticação
+ * Empty initial state for authentication data
  * @constant
  */
 export const initialAuth: Auth = {
@@ -16,7 +16,7 @@ export const initialAuth: Auth = {
 }
 
 /**
- * Estado inicial vazio para mensagens de erro
+ * Empty initial state for error messages
  * @constant
  */
 export const initialErrorMessage: ErrorMessage = {
@@ -25,7 +25,7 @@ export const initialErrorMessage: ErrorMessage = {
 }
 
 /**
- * Configuração padrão para buscas e paginação
+ * Default configuration for searches and pagination
  * @constant
  */
 export const initialSearch: Search = {
@@ -39,7 +39,7 @@ export const initialSearch: Search = {
 }
 
 /**
- * Estado inicial vazio para informações de paginação
+ * Empty initial state for pagination information
  * @constant
  */
 export const initialPageInfo: PageInfo = {
@@ -50,7 +50,7 @@ export const initialPageInfo: PageInfo = {
 }
 
 /**
- * Estado inicial vazio para respostas paginadas
+ * Empty initial state for paginated responses
  * @constant
  */
 export const initialPage: Page = {
@@ -59,7 +59,7 @@ export const initialPage: Page = {
 }
 
 /**
- * Estado inicial vazio para cabeçalho de token
+ * Empty initial state for token header
  * @constant
  */
 export const initialHeader: Header = {
@@ -68,7 +68,7 @@ export const initialHeader: Header = {
 }
 
 /**
- * Estado inicial vazio para payload de token
+ * Empty initial state for token payload
  * @constant
  */
 export const initialPayload: Payload = {

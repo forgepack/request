@@ -2,18 +2,18 @@ import { AxiosInstance } from 'axios'
 import { ErrorMessage } from '../types/error'
 import { Search } from '../types/request'
 
-// Códigos de status HTTP:
-// Respostas de informação (100-199),
-// Respostas de sucesso (200-299),
-// Redirecionamentos (300-399)
-// Erros do cliente (400-499)
-// Erros do servidor (500-599).
+// HTTP status codes:
+// Informational responses (100-199),
+// Success responses (200-299),
+// Redirects (300-399)
+// Client errors (400-499)
+// Server errors (500-599).
 
 /**
- * Processa erros de resposta da API e converte em formato padronizado
+ * Processes API response errors and converts to standardized format
  * 
- * @param error - Objeto de erro do Axios
- * @returns Array de mensagens de erro formatadas
+ * @param error - Axios error object
+ * @returns Array of formatted error messages
  */
 const addError = (error: any): ErrorMessage[] => {
     let errorMessage: ErrorMessage[] = []
@@ -28,17 +28,17 @@ const addError = (error: any): ErrorMessage[] => {
 }
 
 /**
- * Cria um novo registro na API
+ * Creates a new record in the API
  * 
- * @template T - Tipo do objeto a ser criado
- * @param api - Instância do Axios configurada
- * @param url - Endpoint da API (sem barra inicial)
- * @param object - Dados do objeto a ser criado
- * @returns Promise com dados criados ou array de erros
+ * @template T - Type of object to be created
+ * @param api - Configured Axios instance
+ * @param url - API endpoint (without leading slash)
+ * @param object - Object data to be created
+ * @returns Promise with created data or error array
  * 
  * @example
  * ```typescript
- * const result = await create(api, 'users', { name: 'João', email: 'joao@exemplo.com' })
+ * const result = await create(api, 'users', { name: 'John', email: 'john@example.com' })
  * ```
  */
 export const create = async <T,>(api: AxiosInstance, url: string, object: T) => {
@@ -48,13 +48,13 @@ export const create = async <T,>(api: AxiosInstance, url: string, object: T) => 
 }
 
 /**
- * Cria múltiplos registros de uma vez na API
+ * Creates multiple records at once in the API
  * 
- * @template T - Tipo dos objetos a serem criados
- * @param api - Instância do Axios configurada
- * @param url - Endpoint da API (sem barra inicial)
- * @param object - Array de objetos a serem criados
- * @returns Promise com dados criados ou array de erros
+ * @template T - Type of objects to be created
+ * @param api - Configured Axios instance
+ * @param url - API endpoint (without leading slash)
+ * @param object - Array of objects to be created
+ * @returns Promise with created data or error array
  */
 export const createAll = async <T,>(api: AxiosInstance, url: string, object: T[]) => {
     return await api.post<T>(`/${url}/createAll`, object)
@@ -63,31 +63,31 @@ export const createAll = async <T,>(api: AxiosInstance, url: string, object: T[]
 }
 
 /**
- * Busca/recupera registros da API com suporte a paginação e busca
+ * Retrieves records from the API with pagination and search support
  * 
- * Comportamentos:
- * - Sem search: busca todos os registros
- * - Com page/size: busca paginada
- * - Com sort: busca paginada e ordenada
+ * Behaviors:
+ * - Without search: retrieves all records
+ * - With page/size: paginated search
+ * - With sort: paginated and sorted search
  * 
- * @template T - Tipo dos dados retornados
- * @param api - Instância do Axios configurada
- * @param url - Endpoint da API (sem barra inicial)
- * @param search - Parâmetros opcionais de busca/paginação
- * @param signal - Signal para cancelamento da requisição
- * @returns Promise com dados encontrados ou array de erros
+ * @template T - Type of returned data
+ * @param api - Configured Axios instance
+ * @param url - API endpoint (without leading slash)
+ * @param search - Optional search/pagination parameters
+ * @param signal - Signal for request cancellation
+ * @returns Promise with found data or error array
  * 
  * @example
  * ```typescript
- * // Busca simples
+ * // Simple search
  * const all = await retrieve(api, 'users')
  * 
- * // Busca paginada
+ * // Paginated search
  * const page = await retrieve(api, 'users', { page: 0, size: 10 })
  * 
- * // Busca com filtro e ordenação
+ * // Search with filter and sorting
  * const filtered = await retrieve(api, 'users', {
- *   value: 'João',
+ *   value: 'John',
  *   page: 0,
  *   size: 10,
  *   sort: { key: 'name', order: 'ASC' }
@@ -111,17 +111,17 @@ export const retrieve = async <T,>(api: AxiosInstance, url: string, search?: Sea
 }
 
 /**
- * Atualiza um registro existente na API
+ * Updates an existing record in the API
  * 
- * @template T - Tipo do objeto a ser atualizado
- * @param api - Instância do Axios configurada
- * @param url - Endpoint da API (sem barra inicial)
- * @param object - Dados atualizados do objeto
- * @returns Promise com dados atualizados ou array de erros
+ * @template T - Type of object to be updated
+ * @param api - Configured Axios instance
+ * @param url - API endpoint (without leading slash)
+ * @param object - Updated object data
+ * @returns Promise with updated data or error array
  * 
  * @example
  * ```typescript
- * const result = await update(api, 'users', { id: 1, name: 'João Silva' })
+ * const result = await update(api, 'users', { id: 1, name: 'John Silva' })
  * ```
  */
 export const update = async <T,>(api: AxiosInstance, url: string, object: T) => {
@@ -131,13 +131,13 @@ export const update = async <T,>(api: AxiosInstance, url: string, object: T) => 
 }
 
 /**
- * Remove um registro específico da API
+ * Removes a specific record from the API
  * 
- * @template T - Tipo da resposta
- * @param api - Instância do Axios configurada
- * @param url - Endpoint da API (sem barra inicial)
- * @param id - ID do registro a ser removido
- * @returns Promise com resposta ou array de erros
+ * @template T - Type of response
+ * @param api - Configured Axios instance
+ * @param url - API endpoint (without leading slash)
+ * @param id - ID of record to be removed
+ * @returns Promise with response or error array
  * 
  * @example
  * ```typescript
@@ -151,17 +151,17 @@ export const remove = async <T,>(api: AxiosInstance, url: string, id: string) =>
 }
 
 /**
- * Remove registros com chave composta (múltiplos IDs)
+ * Removes records with composite key (multiple IDs)
  * 
- * @template T - Tipo da resposta
- * @param api - Instância do Axios configurada
- * @param url - Endpoint da API (sem barra inicial)
- * @param object - Objeto com dados para remoção
- * @param one - Primeiro identificador
- * @param two - Segundo identificador  
- * @param three - Terceiro identificador (opcional)
- * @param four - Quarto identificador (opcional)
- * @returns Promise com resposta ou array de erros
+ * @template T - Type of response
+ * @param api - Configured Axios instance
+ * @param url - API endpoint (without leading slash)
+ * @param object - Object with data for removal
+ * @param one - First identifier
+ * @param two - Second identifier  
+ * @param three - Third identifier (optional)
+ * @param four - Fourth identifier (optional)
+ * @returns Promise with response or error array
  */
 export const removeComposite = async <T,>(api: AxiosInstance, url: string, object: Object, one: string, two: string, three: string, four: string) => {
     if (three !== '' && four !== '') {
@@ -176,12 +176,12 @@ export const removeComposite = async <T,>(api: AxiosInstance, url: string, objec
 }
 
 /**
- * Remove todos os registros de um endpoint específico
+ * Removes all records from a specific endpoint
  * 
- * @template T - Tipo da resposta
- * @param api - Instância do Axios configurada
- * @param url - Endpoint da API (sem barra inicial)
- * @returns Promise com resposta ou array de erros
+ * @template T - Type of response
+ * @param api - Configured Axios instance
+ * @param url - API endpoint (without leading slash)
+ * @returns Promise with response or error array
  * 
  * @example
  * ```typescript

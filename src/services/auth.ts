@@ -4,10 +4,10 @@ import { Auth, LoginCredentials, LoginResponse, ChangePasswordData, ResetPasswor
 import { removeToken, setToken } from './token'
 
 /**
- * Processa erros de resposta da API e converte em formato padronizado
+ * Processes API response errors and converts to standardized format
  * 
- * @param error - Objeto de erro do Axios
- * @returns Array de mensagens de erro formatadas
+ * @param error - Axios error object
+ * @returns Array of formatted error messages
  */
 const addError = (error: any): ErrorMessage[] => {
     let errorMessage: ErrorMessage[] = []
@@ -25,12 +25,12 @@ const addError = (error: any): ErrorMessage[] => {
 }
 
 /**
- * Realiza login do usuário e armazena o token retornado
+ * Performs user login and stores the returned token
  * 
- * @param api - Instância do Axios configurada
- * @param url - Endpoint de login
- * @param credentials - Credenciais do usuário
- * @returns Promise com resposta de login formatada
+ * @param api - Configured Axios instance
+ * @param url - Login endpoint
+ * @param credentials - User credentials
+ * @returns Promise with formatted login response
  * 
  * @example
  * ```typescript
@@ -40,9 +40,9 @@ const addError = (error: any): ErrorMessage[] => {
  * })
  * 
  * if (result.success) {
- *   console.log('Logado!', result.data)
+ *   console.log('Logged in!', result.data)
  * } else {
- *   console.error('Erros:', result.errors)
+ *   console.error('Errors:', result.errors)
  * }
  * ```
  */
@@ -63,12 +63,12 @@ export const login = async (api: AxiosInstance, url: string, credentials: LoginC
 }
 
 /**
- * Realiza reset de senha do usuário e atualiza o token
+ * Performs user password reset and updates the token
  * 
- * @param api - Instância do Axios configurada
- * @param url - Endpoint de reset de senha
- * @param data - Dados para reset da senha
- * @returns Promise com dados de auth ou array de erros
+ * @param api - Configured Axios instance
+ * @param url - Password reset endpoint
+ * @param data - Password reset data
+ * @returns Promise with auth data or error array
  */
 export const reset = async (api: AxiosInstance, url: string, data: ResetPasswordData): Promise<LoginResponse> => {
     try {
@@ -87,18 +87,18 @@ export const reset = async (api: AxiosInstance, url: string, data: ResetPassword
 }
 
 /**
- * Remove o token do localStorage e desloga o usuário
+ * Removes token from localStorage and logs out the user
  */
 export const logout = () => {
     removeToken()
 }
 
 /**
- * Altera a senha do usuário autenticado
+ * Changes the authenticated user's password
  * 
- * @param api - Instância do Axios configurada
- * @param data - Dados para alteração da senha
- * @returns Promise com resposta de sucesso ou erros
+ * @param api - Configured Axios instance
+ * @param data - Password change data
+ * @returns Promise with success response or errors
  */
 export const changePassword = async (api: AxiosInstance, data: ChangePasswordData): Promise<{ success: boolean; errors?: ErrorMessage[] }> => {
     try {

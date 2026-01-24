@@ -3,21 +3,21 @@ import { Page } from '../types/response'
 import { Search } from '../types/request'
 
 /**
- * Executa requisição paginada para um endpoint específico
+ * Executes a paginated request to a specific endpoint
  * 
- * Funcionalidades:
- * - Constrói URL com parâmetros de busca
- * - Adiciona parâmetros de paginação
- * - Suporte a ordenação
- * - Cancelamento de requisição via AbortSignal
+ * Features:
+ * - Builds URL with search parameters
+ * - Adds pagination parameters
+ * - Sort support
+ * - Request cancellation via AbortSignal
  * 
- * @param api - Instância configurada do Axios
- * @param endpoint - Endpoint da API (sem barra inicial)
- * @param search - Parâmetros opcionais de busca e paginação
- * @param signal - Signal para cancelamento da requisição
- * @returns Promise com dados paginados
+ * @param api - Configured Axios instance
+ * @param endpoint - API endpoint (without leading slash)
+ * @param search - Optional search and pagination parameters
+ * @param signal - Signal for request cancellation
+ * @returns Promise with paginated data
  * 
- * @throws {Error} Lança erro se a requisição falhar
+ * @throws {Error} Throws error if request fails
  * 
  * @example
  * ```typescript

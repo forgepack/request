@@ -1,64 +1,64 @@
 /**
- * Interface que representa os dados de autenticação do usuário
+ * Interface representing user authentication data
  * @interface Auth
  */
 export interface Auth {
-    /** Token de acesso JWT para autenticação */
+    /** JWT access token for authentication */
     readonly accessToken: string,
-    /** Token para renovação da sessão */
+    /** Token for session renewal */
 	refreshToken: string,
-    /** Tipo do token (geralmente "Bearer") */
+    /** Token type (usually "Bearer") */
 	tokenType: string,
-    /** Lista de roles/permissões do usuário */
+    /** List of user roles/permissions */
 	role: string[]
 }
 
 /**
- * Interface para credenciais de login
+ * Interface for login credentials
  * @interface LoginCredentials
  */
 export interface LoginCredentials {
-    /** Nome de usuário ou email */
+    /** Username or email */
     username: string,
-    /** Senha do usuário */
+    /** User password */
     password: string
 }
 
 /**
- * Interface para resposta de login
+ * Interface for login response
  * @interface LoginResponse
  */
 export interface LoginResponse {
-    /** Indica se o login foi bem-sucedido */
+    /** Indicates if login was successful */
     success: boolean,
-    /** Dados de autenticação (se sucesso) */
+    /** Authentication data (if successful) */
     data?: Auth,
-    /** Erros de validação (se falha) */
+    /** Validation errors (if failed) */
     errors?: Array<{ field: string; message: string }>
 }
 
 /**
- * Interface para alteração de senha
+ * Interface for password change
  * @interface ChangePasswordData
  */
 export interface ChangePasswordData {
-    /** Senha atual */
+    /** Current password */
     currentPassword: string,
-    /** Nova senha */
+    /** New password */
     newPassword: string,
-    /** Confirmação da nova senha */
+    /** New password confirmation */
     confirmPassword?: string
 }
 
 /**
- * Interface genérica para reset de senha
+ * Generic interface for password reset
  * @interface ResetPasswordData
  */
 export interface ResetPasswordData {
-    /** Email para reset */
+    /** Email for reset */
     email?: string,
-    /** Token de reset */
+    /** Reset token */
     token?: string,
-    /** Nova senha */
+    /** New password */
     newPassword?: string
 }

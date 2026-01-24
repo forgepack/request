@@ -1,38 +1,41 @@
 /**
- * @fileoverview Pacote React para gerenciamento de requisições HTTP com autenticação JWT
+ * @packageDocumentation
+ * @module @forgepack/request
+ * @see {@link https://forgepack.dev/packages/request | Complete Documentation}
+ * @fileoverview React package for managing HTTP requests with JWT authentication
  * @author Marcelo Gadelha
  * @version 1.0.3
  * @license Apache License 2.0
  * 
- * Este pacote fornece uma solução completa para:
- * - Autenticação JWT com interceptors automáticos
- * - Hooks React para requisições e gerenciamento de estado
- * - Componentes de autenticação e autorização
- * - Operações CRUD padronizadas
- * - Gerenciamento de tokens e paginação
+ * Complete solution for JWT authentication in React applications:
+ * - Automatic JWT authentication with interceptors
+ * - React hooks for requests and state management
+ * - Authentication and authorization components
+ * - Standardized CRUD operations
+ * - Token management and pagination
  */
 
-// API client e configurações
+// API client and configurations
 export * from './api/client'
 
-// Tipos e interfaces
+// Types and interfaces
 export * from './types/auth'
 export * from './types/error'  
 export * from './types/request'
 export * from './types/response'
 export * from './types/token'
 
-// Hooks React para gerenciamento de estado
+// React hooks for state management
 export * from './hooks/AuthContext'
 export * from './hooks/AuthProvider'
 export * from './hooks/useAuth'
 export * from './hooks/useRequest'
 
-// Serviços para operações de dados
+// Services for data operations
 export * from './services/api'
 export * from './services/auth'
 export * from './services/crud'
 export * from './services/token'
 
-// Utilitários e constantes
+// Utilities and constants
 export * from './utils/constants'

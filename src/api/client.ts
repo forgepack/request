@@ -2,30 +2,30 @@ import axios, { AxiosInstance } from "axios"
 import { getToken, removeToken } from "../services/token"
 
 /**
- * Opções de configuração para o cliente da API
+ * Configuration options for the API client
  * @interface ApiClientOptions
  */
 export type ApiClientOptions = {
-    /** URL base da API */
+    /** Base URL of the API */
     baseURL: string
-    /** Callback executado quando recebe erro 401 (Unauthorized) */
+    /** Callback executed when receiving 401 (Unauthorized) error */
     onUnauthorized?: () => void
-    /** Callback executado quando recebe erro 403 (Forbidden) */
+    /** Callback executed when receiving 403 (Forbidden) error */
     onForbidden?: () => void
 }
 
 /**
- * Cria uma instância configurada do cliente Axios com interceptors para autenticação JWT
+ * Creates a configured Axios client instance with interceptors for JWT authentication
  * 
- * @param options - Opções de configuração do cliente
- * @returns Instância configurada do Axios com interceptors de request/response
+ * @param options - Client configuration options
+ * @returns Configured Axios instance with request/response interceptors
  * 
  * @example
  * ```typescript
  * const api = createApiClient({
- *   baseURL: 'https://api.exemplo.com',
+ *   baseURL: 'https://api.example.com',
  *   onUnauthorized: () => window.location.href = '/login',
- *   onForbidden: () => alert('Acesso negado')
+ *   onForbidden: () => alert('Access denied')
  * })
  * ```
  */

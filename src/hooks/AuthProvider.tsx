@@ -7,17 +7,17 @@ import { AxiosInstance } from 'axios'
 import { AuthContext } from './AuthContext'
 
 /**
- * Provedor de contexto de autenticação que gerencia o estado de autenticação globalmente
+ * Authentication context provider that manages authentication state globally
  * 
- * Funcionalidades:
- * - Gerencia estado de autenticação persistente
- * - Verifica expiração de tokens automaticamente
- * - Sincroniza estado entre abas do navegador
- * - Fornece métodos de login/logout
+ * Features:
+ * - Manages persistent authentication state
+ * - Automatically checks token expiration
+ * - Synchronizes state between browser tabs
+ * - Provides login/logout methods
  * 
- * @param props - Propriedades do componente
- * @param props.api - Instância do Axios para requisições
- * @param props.children - Componentes filhos que receberão o contexto
+ * @param props - Component properties
+ * @param props.api - Axios instance for requests
+ * @param props.children - Child components that will receive the context
  * @returns Provider component
  * 
  * @example

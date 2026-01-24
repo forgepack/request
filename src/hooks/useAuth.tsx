@@ -3,9 +3,9 @@ import { useLocation, Navigate, Outlet } from 'react-router-dom'
 import { AuthContext, AuthContextType } from './AuthContext'
 
 /**
- * Hook para acessar o contexto de autenticação
+ * Hook to access authentication context
  * 
- * @returns Contexto de autenticação com estado e métodos
+ * @returns Authentication context with state and methods
  * 
  * @example
  * ```typescript
@@ -17,16 +17,16 @@ export const useAuth = (): AuthContextType => {
 }
 
 /**
- * Componente de proteção de rotas que verifica autenticação e autorização
+ * Route protection component that verifies authentication and authorization
  * 
- * Comportamento:
- * - Se usuário tem role permitida: renderiza conteúdo (Outlet)
- * - Se autenticado mas sem permissão: redireciona para /notAllowed  
- * - Se não autenticado: redireciona para /login
+ * Behavior:
+ * - If user has allowed role: renders content (Outlet)
+ * - If authenticated but without permission: redirects to /notAllowed  
+ * - If not authenticated: redirects to /login
  * 
- * @param props - Propriedades do componente
- * @param props.allowedRoles - Array de roles que têm acesso à rota
- * @returns Componente de navegação condicional
+ * @param props - Component properties
+ * @param props.allowedRoles - Array of roles that have access to the route
+ * @returns Conditional navigation component
  * 
  * @example
  * ```tsx
