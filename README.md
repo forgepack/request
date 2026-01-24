@@ -7,75 +7,17 @@
 ![React](https://img.shields.io/badge/React-19.2.0-blue?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue?logo=typescript)
 
-## Start a new project
-
-```bash
-mkdir package-name
-cd package-name
-npm init
-```
-
-> .json file created:
-```json
-{
-  "name": "package-name",
-  "version": "1.0.0",
-  "description": "Package Description",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": ["palavra-chave1", "palavra-chave2"],
-  "author": "Name",
-  "license": "MIT"
-}
-```
-
-## Publicar no _npm_
-
-```bash
-# Login no npm
-npm login
-# Constrói
-npm run build
-# Simula publicação
-npm pack
-# Publicar o pacote, na primeira vez
-npm publish --access public
-```
-
-## Atualizar versões
-> Quando fizer mudanças:
-```bash
-npm version patch  # 1.0.0 -> 1.0.1
-npm version minor  # 1.0.0 -> 1.1.0
-npm version major  # 1.0.0 -> 2.0.0
-
-npm publish
-# Publicar no npm
-npm publish --registry=https://npm.pkg.github.com
-# Publicar no github
-npm publish --registry=https://registry.npmjs.org
-```
-
-## Publicar em:
-```bash
-https://github.com/forgepack
-https://www.npmjs.com/org/forgepack
-https://dev.to/
-https://codesandbox.io/
-https://stackblitz.com/
-```
+Opinionated Axios-based HTTP client for React applications with JWT support, interceptors, and API request standardization.
 
 ## Consumer use (Vite, React, Next, Node, etc.)
 
-### 📦 **Installation**
+### Installation
 
 ```bash
 npm install @forgepack/request
 ```
 
-### ⚙️ **Configuração Básica**
+### Basic Configuration
 
 ```typescript
 // 1. Configure the API client
@@ -99,7 +41,23 @@ function App() {
 }
 ```
 
-### 🚀 **Key Features**
+## When to use it:
+- Use React
+- Has backend with JWT
+
+## When not to use
+- You need GraphQL
+- Your authentication is not based on JWT
+
+## Works well with:
+- [@forgepack/request](https://www.npmjs.com/package/@forgepack/request)
+- [@forgepack/auth-jwt](https://www.npmjs.com/package/@forgepack/auth-jwt)
+- [@forgepack/crud](https://www.npmjs.com/package/@forgepack/crud)
+- [@forgepack/layout](https://www.npmjs.com/package/@forgepack/layout)
+- [@forgepack/modal](https://www.npmjs.com/package/@forgepack/modal)
+- [@forgepack/datatable](https://www.npmjs.com/package/@forgepack/datatable)
+
+## Key Features
 
 - **🔐 Autenticação JWT** - Automatic login with interceptors
 - **🛡️ Route Protection** - Role-based `RequireAuth` component
