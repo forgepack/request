@@ -1,44 +1,44 @@
 /**
- * Interface que representa a estrutura completa de um token JWT
+ * Interface representing the complete structure of a JWT token
  * @interface Token
  */
 export interface Token {
-    /** Cabeçalho do token contendo algoritmo e tipo */
+    /** Token header containing algorithm and type */
     header: Header,
-    /** Payload do token contendo as claims */
+    /** Token payload containing the claims */
     payload: Payload,
-    /** Assinatura do token */
+    /** Token signature */
     signature: string
 }
 
 /**
- * Interface que representa o cabeçalho de um token JWT
+ * Interface representing a JWT token header
  * @interface Header
  */
 export interface Header {
-    /** Algoritmo usado para assinar o token */
+    /** Algorithm used to sign the token */
     alg: string,
-    /** Tipo do token */
+    /** Token type */
     typ: string
 }
 
 /**
- * Interface que representa o payload de um token JWT
+ * Interface representing a JWT token payload
  * @interface Payload
  */
 export interface Payload {
-    /** Identificador único do token JSON */
+    /** JSON Token Identifier unique identifier */
     jti: string,    //jsonTokenIdentifier
-    /** Emissor do token */
+    /** Token issuer */
     iss: string,    //issuer
-    /** Data/hora de emissão do token (timestamp Unix) */
+    /** Token issue date/time (Unix timestamp) */
     iat: number,    //issuedAt
-    /** Token não é válido antes desta data/hora (timestamp Unix) */
-    nbf: number,    //notBefore (Não Antes)
-    /** Data/hora de expiração do token (timestamp Unix) */
+    /** Token not valid before this date/time (Unix timestamp) */
+    nbf: number,    //notBefore
+    /** Token expiration date/time (Unix timestamp) */
     exp: number,    //expiration
-    /** Assunto do token (geralmente ID do usuário) */
+    /** Token subject (usually user ID) */
     sub: string,    //Subject
-    /** Audiência destinatária do token */
+    /** Token intended audience */
     aud: string     //Audience
 }
