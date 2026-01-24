@@ -1,8 +1,8 @@
 {
     "name": "@forgepack/request",
     "version": "1.0.6",
-    "description": "",
-    "homepage": "https://github.com/forgepack/request#readme",
+    "description": "Opinionated Axios-based HTTP client for React applications with JWT support, interceptors, and API request standardization.",
+    "homepage": "https://forgepack.dev/packages/request",
     "bugs": {
         "url": "https://github.com/forgepack/request/issues"
     },
@@ -39,6 +39,15 @@
     "type": "commonjs",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
+    "module": "dist/index.mjs",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.js"
+        }
+    },
+    "sideEffects": false,
     "files": [
         "dist",
         "README.md",
