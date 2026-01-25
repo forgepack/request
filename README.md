@@ -1,36 +1,85 @@
-# _Request_
+<div align="center">
+<h1> @forgepack/request </h1>
+</div>
 
+**Production-ready HTTP client with JWT authentication for React**
+
+[![npm version](https://img.shields.io/npm/v/@forgepack/request?color=blue)](https://www.npmjs.com/package/@forgepack/request)
+[![npm downloads](https://img.shields.io/npm/dm/@forgepack/request)](https://www.npmjs.com/package/@forgepack/request)
 [![GitHub stars](https://img.shields.io/github/stars/forgepack/request?style=social)](https://github.com/forgepack/request)
+[![license](https://img.shields.io/npm/l/@forgepack/request)](https://github.com/forgepack/request/blob/main/LICENSE)
 
-![Node.js](https://img.shields.io/badge/Node.js-24.13.0-339933?logo=node.js)
-![npm](https://img.shields.io/badge/npm-11.6.2-CB3837?logo=npm)
-![React](https://img.shields.io/badge/React-19.2.0-blue?logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue?logo=typescript)
+[![React](https://img.shields.io/badge/React-19.2.0-61DAFB?logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Axios](https://img.shields.io/badge/Axios-Latest-5A29E4?logo=axios)](https://axios-http.com/)
 
-Opinionated Axios-based HTTP client for React applications with JWT support, interceptors, and API request standardization.
+[Documentation](https://forgepack.dev/packages/request) • [NPM Package](https://www.npmjs.com/package/@forgepack/request) • [GitHub](https://github.com/forgepack/request) • [Report Bug](https://github.com/forgepack/request/issues)
 
-## Consumer use (Vite, React, Next, Node, etc.)
+## Summary
 
-### Installation
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Using CRUD Operations](#using-crud-operations)
+- [Route Protection](#route-protection)
+- [When to Use](#when-to-use)
+- [Works well with](#works-well-with)
+- [Key Features](#key-features)
+- [Contributing](#contributing)
+- [Code of Conduct](#code-of-conduct)
+- [Author and Developers](#author-and-developers)
+- [License](#license)
 
+## Description
+
+`@forgepack/request` is a complete, opinionated HTTP client built on top of Axios for React applications. It provides automatic JWT authentication, request/response interceptors, React hooks for state management, and standardized CRUD operations—everything you need to handle API communication in modern React apps.
+
+**Perfect for:** Teams building React applications with JWT-based backends who want a plug-and-play solution that handles authentication, authorization, and API requests with minimal boilerplate.
+
+# Consumer use
+
+## Installation
 ```bash
+# npm
 npm install @forgepack/request
+
+# yarn
+yarn add @forgepack/request
+
+# pnpm
+pnpm add @forgepack/request
 ```
 
-### Basic Configuration
+### Peer Dependencies
 
+Make sure you have these installed:
+```json
+{
+  "react": ">=16.8.0",
+  "react-dom": ">=16.8.0",
+  "axios": ">=1.0.0",
+  "react-router-dom": ">=6.0.0" // Optional, only if using RequireAuth
+}
+```
+
+## Quick Start
+
+### Configure the API client
 ```typescript
-// 1. Configure the API client
 import { createApiClient } from "@forgepack/request"
 
 export const api = createApiClient({
   baseURL: "https://api.service.com",
+  /** Called on 401 errors */
   onUnauthorized: () => window.location.href = "/login",
+  /** Called on 403 errors */
   onForbidden: () => window.location.href = "/notAllowed"
 })
+```
 
-// 2. Configure the authentication provider
+### Configure the authentication provider
+```typescript
 import { AuthProvider } from '@forgepack/request'
+import { api } from './api/client'
 
 function App() {
   return (
@@ -41,21 +90,118 @@ function App() {
 }
 ```
 
-## When to use it:
-- Use React
-- Has backend with JWT
+### Use in Components
+```typescript
+import { useAuth } from '@forgepack/request'
+import { useNavigate } from 'react-router-dom'
 
-## When not to use
-- You need GraphQL
-- Your authentication is not based on JWT
+function LoginPage() {
+  const { loginUser } = useAuth()
+  const navigate = useNavigate()
 
-## Works well with:
-- [@forgepack/request](https://www.npmjs.com/package/@forgepack/request)
-- [@forgepack/auth-jwt](https://www.npmjs.com/package/@forgepack/auth-jwt)
-- [@forgepack/crud](https://www.npmjs.com/package/@forgepack/crud)
-- [@forgepack/layout](https://www.npmjs.com/package/@forgepack/layout)
-- [@forgepack/modal](https://www.npmjs.com/package/@forgepack/modal)
-- [@forgepack/datatable](https://www.npmjs.com/package/@forgepack/datatable)
+  const handleLogin = async (credentials) => {
+    const result = await loginUser(credentials)
+    
+    if (result.success) {
+      navigate('/dashboard')
+    } else {
+      console.error('Login failed:', result.errors)
+    }
+  }
+
+  return 
+}
+```
+
+## Using CRUD Operations
+```typescript
+import { create, retrieve, update, remove } from '@forgepack/request'
+import { api } from './api/client'
+
+// Create
+const newUser = await create(api, 'users', {
+  name: 'John Snow',
+  email: 'john@example.com'
+})
+
+// Retrieve all
+const allUsers = await retrieve(api, 'users')
+
+// Retrieve paginated
+const page = await retrieve(api, 'users', { page: 0, size: 10 })
+
+// Update
+const updated = await update(api, 'users', {
+  id: 1,
+  name: 'John Smith'
+})
+
+// Delete
+await remove(api, 'users', '1')
+```
+
+## Route Protection
+```typescript
+import { RequireAuth } from '@forgepack/request'
+import { Route, Routes } from 'react-router-dom'
+
+function App() {
+  return (    
+      /** Public routes */
+      /* Protected routes - any authenticated user */
+      <Route path="/dashboard" element={<RequireAuth allowedRoles={['USER', 'ADMIN']} />}>
+      {/* Admin-only routes */}
+      <Route path="/admin" element={<RequireAuth allowedRoles={['ADMIN']} />}>
+  )
+}
+```
+
+### Token Management
+```typescript
+import { getToken, getPayload, isValidToken } from '@forgepack/request'
+
+/** Check if token is valid */
+if (isValidToken()) {
+  console.log('User is authenticated')
+}
+
+/** Get token data */
+const auth = getToken()
+console.log(auth.accessToken)
+console.log(auth.role)
+
+/** Decode payload */
+const payload = getPayload()
+console.log('User ID:', payload.sub)
+console.log('Expires at:', new Date(payload.exp * 1000))
+```
+
+## When to Use
+
+### Perfect for:
+- ✅ React applications (16.8+)
+- ✅ JWT-based authentication
+- ✅ RESTful APIs
+- ✅ Applications requiring role-based access control
+- ✅ Projects that need standardized CRUD operations
+- ✅ Teams wanting to reduce authentication boilerplate
+
+### Use not recommended when:
+- ❌ GraphQL APIs (use Apollo Client instead)
+- ❌ Non-JWT authentication (OAuth2, session-based, etc.)
+- ❌ Server-side rendering with Next.js (token management relies on localStorage)
+- ❌ React Native (localStorage not available)
+
+## Works well with
+
+Complete your React stack with other @forgepack packages:
+| Package | Description |
+|---------|-------------|
+| [@forgepack/auth-jwt](https://www.npmjs.com/package/@forgepack/auth-jwt) | Backend JWT authentication utilities |
+| [@forgepack/crud](https://www.npmjs.com/package/@forgepack/crud) | Advanced CRUD components with forms |
+| [@forgepack/layout](https://www.npmjs.com/package/@forgepack/layout) | Responsive layout components |
+| [@forgepack/modal](https://www.npmjs.com/package/@forgepack/modal) | Modal dialogs for CRUD operations |
+| [@forgepack/datatable](https://www.npmjs.com/package/@forgepack/datatable) | Data tables with pagination and sorting |
 
 ## Key Features
 
@@ -66,34 +212,44 @@ function App() {
 - **🔑 Token Management** - Automatic validation and decoding
 - **📱 Responsive** - Loading, error, and pagination states
 
-### 📚 **Complete Documentation**
+## Complete Documentation
 
 For detailed examples, usage guides, and API references, please visit:
 **[Complete Documentation](./docs/README.md)**
 
-### 🎯 **Quick Example**
+# Developer usage
 
-```tsx
-// Authentication hook
-const { loginUser, isAuthenticated, role } = useAuth()
+## Contributing
 
-// Hook for paginated requests
-const { response, loading, error } = useRequest(api, 'resource', {
-  page: 0, size: 10, value: 'search'
-})
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
-// Route protection
-<RequireAuth allowedRoles={['ADMIN']}>
-  <AdminPanel />
-</RequireAuth>
+### Development Setup
+```bash
+# Clone repository
+git clone https://github.com/forgepack/request.git
+cd request
+
+# Install dependencies
+npm install
+
+# Run tests
+npm test
+
+# Build
+npm run build
 ```
 
-## Developers
-> [Gadelha TI](https://github.com/gadelhati)
+## Code of Conduct
+
+Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
+
+## Author and Developers
+- GitHub: [Gadelha TI](https://github.com/gadelhati)
+- Website: [forgepack.dev](https://forgepack.dev)
 
 ## **License**
 
-> This project is licensed under the **MIT License** - see the [MIT LICENSE]( https://choosealicense.com/licenses/mit/) file for details.
+This project is licensed under the **MIT License** - see the [MIT LICENSE]( https://choosealicense.com/licenses/mit/) file for details.
 
 ```text
 MIT License
@@ -121,6 +277,10 @@ SOFTWARE.
 
 <div align="center">
 
-Request
-
 **⭐ Did you like the project? Leave a star! ⭐**
+
+Made with ❤️ by the Forgepack team
+
+[Documentation](https://forgepack.dev/packages/request) • [NPM](https://www.npmjs.com/package/@forgepack/request) • [GitHub](https://github.com/forgepack/request) • [Issues](https://github.com/forgepack/request/issues)
+
+</div>

@@ -71,7 +71,7 @@ export const create = async <T,>(api: AxiosInstance, url: string, object: T): Pr
  * ```typescript
  * // Create multiple users at once
  * const users = [
- *   { name: 'John Doe', email: 'john@example.com' },
+ *   { name: 'John Snow', email: 'john@example.com' },
  *   { name: 'Jane Smith', email: 'jane@example.com' },
  *   { name: 'Bob Johnson', email: 'bob@example.com' }
  * ]
