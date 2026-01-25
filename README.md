@@ -109,7 +109,11 @@ function LoginPage() {
     }
   }
 
-  return 
+  return (
+    <div>
+      {/* Your login form here */}
+    </div>
+  )
 }
 ```
 
@@ -146,12 +150,17 @@ import { RequireAuth } from '@forgepack/request'
 import { Route, Routes } from 'react-router-dom'
 
 function App() {
-  return (    
-      /** Public routes */
-      /* Protected routes - any authenticated user */
-      <Route path="/dashboard" element={<RequireAuth allowedRoles={['USER', 'ADMIN']} />}>
+  return (
+    <Routes>
+      {/* Public routes */}
+      <Route path="/login" element={<LoginPage />} />
+      
+      {/* Protected routes - any authenticated user */}
+      <Route path="/dashboard" element={<RequireAuth allowedRoles={['USER', 'ADMIN']}><Dashboard /></RequireAuth>} />
+      
       {/* Admin-only routes */}
-      <Route path="/admin" element={<RequireAuth allowedRoles={['ADMIN']} />}>
+      <Route path="/admin" element={<RequireAuth allowedRoles={['ADMIN']}><AdminPanel /></RequireAuth>} />
+    </Routes>
   )
 }
 ```
