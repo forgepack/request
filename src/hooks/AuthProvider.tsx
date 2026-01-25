@@ -7,6 +7,16 @@ import { AxiosInstance } from 'axios'
 import { AuthContext } from './AuthContext'
 
 /**
+ * Properties of the AuthProvider
+ */
+export type AuthProviderProps = {
+    /** Axios instance for requests */
+    api: AxiosInstance
+    /** Child components that will receive the context */
+    children: React.ReactNode
+}
+
+/**
  * Authentication context provider that manages authentication state globally
  * 
  * Features:
@@ -14,23 +24,32 @@ import { AuthContext } from './AuthContext'
  * - Automatically checks token expiration
  * - Synchronizes state between browser tabs
  * - Provides login/logout methods
+ * - Automatically redirects to /login when token expires
  * 
- * @param props - Component properties
+ * @param {AuthProviderProps} props - Component properties
  * @param props.api - Axios instance for requests
  * @param props.children - Child components that will receive the context
- * @returns Provider component
+ * @returns {JSX.Element} - Authentication context provider component
  * 
  * @example
  * ```tsx
- * <AuthProvider api={apiClient}>
- *   <App />
- * </AuthProvider>
+ * import { createApiClient } from '@forgepack/request'
+ * 
+ * const api = createApiClient({ baseURL: 'https://api.example.com' })
+ * 
+ * function App() {
+ *   return (
+ *     <AuthProvider api={api}>
+ *       <Router>
+ *         <Routes />
+ *       </Router>
+ *     </AuthProvider>
+ *   )
+ * }
  * ```
  */
-export const AuthProvider = ({ api, children }: {
-    api: AxiosInstance
-    children: React.ReactNode
-}) => {
+
+export const AuthProvider = ({ api, children }: AuthProviderProps) => {
     const [state, setState] = useState<Auth>(() =>
         isValidToken() ? getToken() : initialAuth
     )
@@ -39,7 +58,7 @@ export const AuthProvider = ({ api, children }: {
         const result = await login(api, '/auth/login', credentials)
 
         if (result.success && result.data) {
-            setState(result.data)
+               setState(result.data)
         }
 
         return result
@@ -50,7 +69,7 @@ export const AuthProvider = ({ api, children }: {
         setState(initialAuth)
         window.location.href = '/login'
     }, [])
-    // Verifica token expirado a cada minuto
+    /** Checks for expired token every minute */
     useEffect(() => {
         const interval = setInterval(() => {
             if (state.accessToken && !isValidToken()) {
@@ -59,7 +78,7 @@ export const AuthProvider = ({ api, children }: {
         }, 60000)
         return () => clearInterval(interval)
     }, [state.accessToken, logoutUser])
-    // Escuta mudanças no localStorage (ex.: logout em outra aba)
+    /** Listens for changes in localStorage (e.g., logout in another tab) */
     useEffect(() => {
         const handleStorageChange = (e: StorageEvent) => {
             if (e.key === 'token') {
