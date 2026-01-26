@@ -1,13 +1,13 @@
 {
     "name": "@forgepack/request",
-    "version": "1.0.6",
+    "version": "1.0.11",
     "description": "Opinionated Axios-based HTTP client for React applications with JWT support, interceptors, and API request standardization.",
     "homepage": "https://forgepack.dev/packages/request",
     "bugs": {
         "url": "https://github.com/forgepack/request/issues"
     },
     "publishConfig": {
-        "@forgepack:registry": "https://npm.pkg.github.com"
+        "@forgepack:registry": "https://registry.npmjs.org"
     },
     "repository": {
         "type": "git",
@@ -39,12 +39,11 @@
     "type": "commonjs",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
-    "module": "dist/index.mjs",
     "exports": {
         ".": {
             "types": "./dist/index.d.ts",
-            "import": "./dist/index.mjs",
-            "require": "./dist/index.js"
+            "require": "./dist/index.js",
+            "default": "./dist/index.js"
         }
     },
     "sideEffects": false,
@@ -54,7 +53,8 @@
         "LICENSE"
     ],
     "scripts": {
-        "build": "tsc",
+        "build": "npm run clean && tsc",
+        "clean": "rmdir /s /q dist 2>nul || true",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "peerDependencies": {
