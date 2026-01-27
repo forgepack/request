@@ -13,7 +13,7 @@
         "type": "git",
         "url": "git+https://github.com/forgepack/request.git"
     },
-    "license": "MIT License",
+    "license": "MIT",
     "keywords": [
         "react",
         "frontend",
