@@ -1,6 +1,4 @@
-<div align="center">
-<h1> @forgepack/request </h1>
-</div>
+# @forgepack/request
 
 **Production-ready HTTP client with JWT authentication for React**
 
@@ -64,30 +62,39 @@ Make sure you have these installed:
 ## Quick Start
 
 ### Configure the API client
-```typescript
+```ts
+// src/api.ts
 import { createApiClient } from "@forgepack/request"
 
 export const api = createApiClient({
   baseURL: "https://api.service.com",
-  /** Called on 401 errors */
+  /** Called on 401 errors (expired token) */
   onUnauthorized: () => window.location.href = "/login",
-  /** Called on 403 errors */
+  /** Called on 403 errors (without permission) */
   onForbidden: () => window.location.href = "/notAllowed"
 })
 ```
 
 ### Configure the authentication provider
-```typescript
+```tsx
+// src/App.tsx
+import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider } from '@forgepack/request'
-import { api } from './api/client'
+import { api } from './api'
+import { AppRoutes } from './routes'
 
 function App() {
   return (
-    <AuthProvider api={api}>
-      <YourApp />
-    </AuthProvider>
+    <BrowserRouter>
+      <AuthProvider api={api}>
+        <AppRoutes />
+      </AuthProvider>
+    </BrowserRouter>
   )
 }
+
+export default App
 ```
 
 ### Use in Components
