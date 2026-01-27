@@ -2,21 +2,21 @@
 
 ## useAuth
 
-Hook principal para gerenciamento de autenticação.
+Main hook for authentication management.
 
-### Retorno
+### Return
 
-| Propriedade | Tipo | Descrição |
-|-------------|------|-----------|
-| `accessToken` | `string` | Token JWT atual |
-| `refreshToken` | `string` | Token de renovação |
-| `tokenType` | `string` | Tipo do token (Bearer) |
-| `role` | `string[]` | Permissões do usuário |
-| `loginUser` | `(credentials: any) => Promise<any>` | Função de login |
-| `logoutUser` | `() => void` | Função de logout |
-| `isAuthenticated` | `boolean` | Status de autenticação |
+| Property | Type | Description |
+|----------|------|-------------|
+| `accessToken` | `string` | Current JWT token |
+| `refreshToken` | `string` | Refresh token |
+| `tokenType` | `string` | Token type (Bearer) |
+| `role` | `string[]` | User permissions |
+| `loginUser` | `(credentials: any) => Promise<any>` | Login function |
+| `logoutUser` | `() => void` | Logout function |
+| `isAuthenticated` | `boolean` | Authentication status |
 
-### Exemplo
+### Example
 
 ```tsx
 import { useAuth } from '@forgepack/request'
@@ -28,26 +28,26 @@ const { loginUser, logoutUser, isAuthenticated, role } = useAuth()
 
 ## useRequest
 
-Hook para requisições HTTP paginadas com gerenciamento automático de estado.
+Hook for paginated HTTP requests with automatic state management.
 
-### Parâmetros
+### Parameters
 
-| Parâmetro | Tipo | Obrigatório | Descrição |
-|-----------|------|-------------|-----------|
-| `api` | `AxiosInstance` | ✅ | Instância do Axios |
-| `endpoint` | `string` | ✅ | Endpoint da API |
-| `search` | `Search` | ❌ | Parâmetros de busca |
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `api` | `AxiosInstance` | ✅ | Axios instance |
+| `endpoint` | `string` | ✅ | API endpoint |
+| `search` | `Search` | ❌ | Search parameters |
 
-### Retorno
+### Return
 
-| Propriedade | Tipo | Descrição |
-|-------------|------|-----------|
-| `response` | `Page<T>` | Dados da resposta paginada |
-| `error` | `ErrorMessage[]` | Array de erros |
-| `loading` | `boolean` | Estado de carregamento |
-| `request` | `() => Promise<void>` | Função para re-executar |
+| Property | Type | Description |
+|----------|------|-------------|
+| `response` | `Page<T>` | Paginated response data |
+| `error` | `ErrorMessage[]` | Error array |
+| `loading` | `boolean` | Loading state |
+| `request` | `() => Promise<void>` | Function to re-execute |
 
-### Exemplo
+### Example
 
 ```tsx
 import { useRequest } from '@forgepack/request'
@@ -60,39 +60,39 @@ const { response, error, loading, request } = useRequest(api, 'users', {
 })
 ```
 
-### Interface Search
+### Search Interface
 
 ```typescript
 interface Search {
-  value?: string     // Termo de busca
-  page?: number      // Página (base 0)
-  size?: number      // Itens por página
-  sort?: {           // Ordenação
+  value?: string     // Search term
+  page?: number      // Page (0-based)
+  size?: number      // Items per page
+  sort?: {           // Sorting
     key: string
     order: 'ASC' | 'DESC'
   }
 }
 ```
 
-### Interface Page
+### Page Interface
 
 ```typescript
 interface Page<T = unknown> {
-  content: T[]       // Dados da página
+  content: T[]       // Page data
   page: {
-    size: number           // Tamanho da página
-    number: number         // Número da página atual
-    totalElements: number  // Total de elementos
-    totalPages: number     // Total de páginas
+    size: number           // Page size
+    number: number         // Current page number
+    totalElements: number  // Total elements
+    totalPages: number     // Total pages
   }
 }
 ```
 
 ---
 
-## Hook Personalizado - useAuthStatus
+## Custom Hook - useAuthStatus
 
-Exemplo de hook personalizado usando o pacote:
+Example of custom hook using the package:
 
 ```tsx
 // src/hooks/useAuthStatus.ts

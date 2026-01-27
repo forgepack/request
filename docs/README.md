@@ -1,60 +1,60 @@
-# Documentação - @forgepack/request
+# Documentation - @forgepack/request
 
-Documentação completa do pacote React para gerenciamento de requisições HTTP com autenticação JWT.
+Complete documentation for the React package for HTTP request management with JWT authentication.
 
-## 📚 Índice
+## 📚 Table of Contents
 
-### Guias de Uso
-- [Instalação e Configuração](./getting-started.md)
-- [Autenticação](./authentication.md)  
-- [Proteção de Rotas](./route-protection.md)
-- [Requisições e Paginação](./requests.md)
-- [Operações CRUD](./crud-operations.md)
-- [Gerenciamento de Tokens](./token-management.md)
+### Usage Guides
+- [Installation and Setup](./getting-started.md)
+- [Authentication](./authentication.md)  
+- [Route Protection](./route-protection.md)
+- [Requests and Pagination](./requests.md)
+- [CRUD Operations](./crud-operations.md)
+- [Token Management](./token-management.md)
 
-### Exemplos Práticos
-- [Formulário de Login](./examples/login-form.md)
-- [Lista de Usuários](./examples/users-list.md)
-- [Dashboard Completo](./examples/dashboard.md)
-- [Serviços de Usuário](./examples/user-service.md)
+### Practical Examples
+- [Login Form](./examples/login-form.md)
+- [Users List](./examples/users-list.md)
+- [Complete Dashboard](./examples/dashboard.md)
+- [User Service](./examples/user-service.md)
 
-### Referência da API
+### API Reference
 - [Hooks](./api/hooks.md)
-- [Componentes](./api/components.md)
-- [Serviços](./api/services.md)
-- [Tipos TypeScript](./api/types.md)
-- [Utilitários](./api/utilities.md)
+- [Components](./api/components.md)
+- [Services](./api/services.md)
+- [TypeScript Types](./api/types.md)
+- [Utilities](./api/utilities.md)
 
-## 🚀 Recursos Principais
+## 🚀 Main Features
 
-- **🔐 Autenticação JWT** - Sistema completo com interceptors automáticos
-- **🛡️ Proteção de Rotas** - Controle de acesso baseado em roles
-- **📊 Requisições Reativas** - Hooks com estado automático
-- **⚡ CRUD Simplificado** - Operações padronizadas
-- **🔑 Tokens Seguros** - Validação e gerenciamento automático
-- **📱 Interface Responsiva** - Estados de loading e erro
+- **🔐 JWT Authentication** - Complete system with automatic interceptors
+- **🛡️ Route Protection** - Role-based access control
+- **📊 Reactive Requests** - Hooks with automatic state
+- **⚡ Simplified CRUD** - Standardized operations
+- **🔑 Secure Tokens** - Automatic validation and management
+- **📱 Responsive Interface** - Loading and error states
 
-## 💡 Filosofia do Pacote
+## 💡 Package Philosophy
 
-Este pacote foi desenvolvido para eliminar o boilerplate comum em aplicações React que precisam de:
+This package was developed to eliminate common boilerplate in React applications that need:
 
-1. **Autenticação JWT segura** com renovação automática
-2. **Interceptors HTTP** para adicionar tokens automaticamente  
-3. **Gerenciamento de estado** para requisições
-4. **Proteção de rotas** baseada em permissões
-5. **Operações CRUD** padronizadas e reutilizáveis
+1. **Secure JWT authentication** with automatic renewal
+2. **HTTP interceptors** to add tokens automatically  
+3. **State management** for requests
+4. **Route protection** based on permissions
+5. **CRUD operations** standardized and reusable
 
-## 🎯 Casos de Uso Ideais
+## 🎯 Ideal Use Cases
 
-- Aplicações SPA (React, Next.js, Vite)
-- Dashboards administrativos
-- Portais de usuário
-- APIs REST com autenticação JWT
-- Sistemas com múltiplos níveis de permissão
+- SPA Applications (React, Next.js, Vite)
+- Administrative dashboards
+- User portals
+- REST APIs with JWT authentication
+- Systems with multiple permission levels
 
-## 📋 Pré-requisitos
+## 📋 Prerequisites
 
 - React 18+
 - React Router DOM 6+
-- TypeScript (recomendado)
-- Axios (incluído como dependência)
+- TypeScript (recommended)
+- Axios (included as dependency)

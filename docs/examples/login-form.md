@@ -1,6 +1,6 @@
-# Formulário de Login Completo
+# Complete Login Form
 
-## 📝 Exemplo Básico
+## 📝 Basic Example
 
 ```tsx
 // src/components/LoginForm.tsx
@@ -25,26 +25,26 @@ export const LoginForm = () => {
       const result = await loginUser(credentials)
       
       if (result.success) {
-        console.log('Login realizado!', result.data)
-        // Usuário será redirecionado automaticamente
+        console.log('Login successful!', result.data)
+        // User will be redirected automatically
       } else {
         setErrors(result.errors.map((err: any) => err.message))
       }
     } catch (error) {
-      setErrors(['Erro interno. Tente novamente.'])
+      setErrors(['Internal error. Please try again.'])
     } finally {
       setLoading(false)
     }
   }
 
-  // Se já está autenticado, mostra informações do usuário
+  // If already authenticated, show user information
   if (isAuthenticated) {
     return (
       <div className="welcome-card">
-        <h2>Bem-vindo!</h2>
-        <p>Suas permissões: {role.join(', ')}</p>
+        <h2>Welcome!</h2>
+        <p>Your permissions: {role.join(', ')}</p>
         <button onClick={() => window.location.href = '/dashboard'}>
-          Ir para Dashboard
+          Go to Dashboard
         </button>
       </div>
     )
@@ -52,7 +52,7 @@ export const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="login-form">
-      <h2>Entrar</h2>
+      <h2>Sign In</h2>
       
       {errors.length > 0 && (
         <div className="error-messages">
@@ -63,11 +63,11 @@ export const LoginForm = () => {
       )}
 
       <div className="form-group">
-        <label htmlFor="username">Usuário</label>
+        <label htmlFor="username">Username</label>
         <input
           id="username"
           type="text"
-          placeholder="Digite seu usuário"
+          placeholder="Enter your username"
           value={credentials.username}
           onChange={(e) => setCredentials({
             ...credentials, 
@@ -78,11 +78,11 @@ export const LoginForm = () => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="password">Senha</label>
+        <label htmlFor="password">Password</label>
         <input
           id="password"
           type="password"
-          placeholder="Digite sua senha"
+          placeholder="Enter your password"
           value={credentials.password}
           onChange={(e) => setCredentials({
             ...credentials, 
@@ -97,7 +97,7 @@ export const LoginForm = () => {
         disabled={loading || !credentials.username || !credentials.password}
         className="submit-button"
       >
-        {loading ? 'Entrando...' : 'Entrar'}
+        {loading ? 'Signing in...' : 'Sign In'}
       </button>
     </form>
   )

@@ -1,21 +1,21 @@
-# Tipos TypeScript
+# TypeScript Types
 
-## Interfaces Principais
+## Main Interfaces
 
 ### Auth
 
-Interface que representa os dados de autenticação do usuário.
+Interface that represents user authentication data.
 
 ```typescript
 interface Auth {
-  readonly accessToken: string  // Token JWT de acesso
-  refreshToken: string         // Token para renovação
-  tokenType: string           // Tipo do token (Bearer)
-  role: string[]             // Permissões do usuário
+  readonly accessToken: string  // JWT access token
+  refreshToken: string         // Token for renewal
+  tokenType: string           // Token type (Bearer)
+  role: string[]             // User permissions
 }
 ```
 
-**Exemplo:**
+**Example:**
 ```typescript
 const auth: Auth = {
   accessToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
@@ -27,28 +27,28 @@ const auth: Auth = {
 
 ### LoginCredentials
 
-Interface para credenciais de login.
+Interface for login credentials.
 
 ```typescript
 interface LoginCredentials {
-  username: string  // Nome de usuário ou email
-  password: string  // Senha do usuário
+  username: string  // Username or email
+  password: string  // User password
 }
 ```
 
 ### LoginResponse
 
-Interface para resposta de login tipada.
+Interface for typed login response.
 
 ```typescript
 interface LoginResponse {
-  success: boolean                              // Indica sucesso
-  data?: Auth                                  // Dados de auth (se sucesso)
-  errors?: Array<{ field: string; message: string }> // Erros (se falha)
+  success: boolean                              // Indicates success
+  data?: Auth                                  // Auth data (if success)
+  errors?: Array<{ field: string; message: string }> // Errors (if failure)
 }
 ```
 
-**Exemplo:**
+**Example:**
 ```typescript
 const result: LoginResponse = await loginUser({ 
   username: "user", 
@@ -58,19 +58,19 @@ const result: LoginResponse = await loginUser({
 if (result.success && result.data) {
   console.log('Token:', result.data.accessToken)
 } else if (result.errors) {
-  console.error('Erros:', result.errors)
+  console.error('Errors:', result.errors)
 }
 ```
 
 ### ChangePasswordData
 
-Interface para alteração de senha.
+Interface for password change.
 
 ```typescript
 interface ChangePasswordData {
-  currentPassword: string      // Senha atual
-  newPassword: string         // Nova senha
-  confirmPassword?: string    // Confirmação (opcional)
+  currentPassword: string      // Current password
+  newPassword: string         // New password
+  confirmPassword?: string    // Confirmation (optional)
 }
 ```
 
@@ -78,20 +78,20 @@ interface ChangePasswordData {
 
 ### ErrorMessage
 
-Interface para mensagens de erro de validação.
+Interface for validation error messages.
 
 ```typescript
 interface ErrorMessage {
-  field: string    // Campo que contém o erro
-  message: string  // Mensagem descritiva
+  field: string    // Field containing the error
+  message: string  // Descriptive message
 }
 ```
 
-**Exemplo:**
+**Example:**
 ```typescript
 const errors: ErrorMessage[] = [
-  { field: "username", message: "Usuário é obrigatório" },
-  { field: "password", message: "Senha deve ter no mínimo 6 caracteres" }
+  { field: "username", message: "Username is required" },
+  { field: "password", message: "Password must have at least 6 characters" }
 ]
 ```
 
