@@ -69,7 +69,7 @@
  * 
  * @fileoverview React package for managing HTTP requests with JWT authentication
  * @author Marcelo Gadelha {@link https://github.com/gadelhati}
- * @version 1.1.14
+ * @version 1.1.0
  * @license MIT License
  * 
  * @remarks
