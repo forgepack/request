@@ -1,6 +1,6 @@
 {
     "name": "@forgepack/request",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Opinionated Fetch-based HTTP client for React applications with JWT support, interceptors, and API request standardization.",
     "homepage": "https://forgepack.dev/packages/request",
     "bugs": {
