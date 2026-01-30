@@ -1,7 +1,7 @@
 {
     "name": "@forgepack/request",
     "version": "1.0.14",
-    "description": "Opinionated Axios-based HTTP client for React applications with JWT support, interceptors, and API request standardization.",
+    "description": "Opinionated Fetch-based HTTP client for React applications with JWT support, interceptors, and API request standardization.",
     "homepage": "https://forgepack.dev/packages/request",
     "bugs": {
         "url": "https://github.com/forgepack/request/issues"
@@ -66,6 +66,5 @@
         "typescript": "^5.9.3"
     },
     "dependencies": {
-        "axios": "^1.13.2"
     }
 }

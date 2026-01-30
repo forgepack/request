@@ -9,7 +9,7 @@
 
 [![React](https://img.shields.io/badge/React-19.2.0-61DAFB?logo=react)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue?logo=typescript)](https://www.typescriptlang.org/)
-[![Axios](https://img.shields.io/badge/Axios-Latest-5A29E4?logo=axios)](https://axios-http.com/)
+[![Fetch API](https://img.shields.io/badge/Fetch_API-Native-5A29E4?logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 
 [Documentation](https://forgepack.dev/packages/request) • [NPM Package](https://www.npmjs.com/package/@forgepack/request) • [GitHub](https://github.com/forgepack/request) • [Report Bug](https://github.com/forgepack/request/issues)
 
@@ -29,7 +29,7 @@
 
 ## Description
 
-`@forgepack/request` is a complete, opinionated HTTP client built on top of Axios for React applications. It provides automatic JWT authentication, request/response interceptors, React hooks for state management, and standardized CRUD operations—everything you need to handle API communication in modern React apps.
+`@forgepack/request` is a complete, opinionated HTTP client built on top of the native Fetch API for React applications. It provides automatic JWT authentication, request/response interceptors, React hooks for state management, and standardized CRUD operations—everything you need to handle API communication in modern React apps.
 
 **Perfect for:** Teams building React applications with JWT-based backends who want a plug-and-play solution that handles authentication, authorization, and API requests with minimal boilerplate.
 
@@ -54,7 +54,6 @@ Make sure you have these installed:
 {
   "react": ">=16.8.0",
   "react-dom": ">=16.8.0",
-  "axios": ">=1.0.0",
   "react-router-dom": ">=6.0.0" // Optional, only if using RequireAuth
 }
 ```

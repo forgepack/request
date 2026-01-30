@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios'
+import { ApiInstance } from '../api/client'
 import { ErrorMessage } from '../types/error'
 import { Auth, LoginCredentials, LoginResponse, ChangePasswordData, ResetPasswordData } from '../types/auth'
 import { removeToken, setToken } from './token'
@@ -6,7 +6,7 @@ import { removeToken, setToken } from './token'
 /**
  * Processes API response errors and converts them to standardized format
  * 
- * @param {any} error - Axios error object
+ * @param {any} error - API error object
  * @returns {ErrorMessage[]} Array of formatted error messages with field and message properties
  * 
  * @internal This is a utility function used internally by auth service methods
@@ -42,7 +42,7 @@ const addError = (error: any): ErrorMessage[] => {
 /**
  * Performs user login and stores the returned token
  * 
- * @param {AxiosInstance} api - Configured Axios instance with base URL
+ * @param {ApiInstance} api - Configured API instance with base URL
  * @param {string} url - Login endpoint path (e.g., '/auth/login')
  * @param {LoginCredentials} credentials - User login credentials
  * @param {string} credentials.username - Username or email
@@ -70,7 +70,7 @@ const addError = (error: any): ErrorMessage[] => {
  * }
  * ```
  */
-export const login = async (api: AxiosInstance, url: string, credentials: LoginCredentials): Promise<LoginResponse> => {
+export const login = async (api: ApiInstance, url: string, credentials: LoginCredentials): Promise<LoginResponse> => {
     try {
         const response = await api.post<Auth>(url, credentials)
         setToken(response.data)
@@ -89,7 +89,7 @@ export const login = async (api: AxiosInstance, url: string, credentials: LoginC
 /**
  * Performs password reset using a reset token and updates authentication
  * 
- * @param {AxiosInstance} api - Configured Axios instance
+ * @param {ApiInstance} api - Configured API instance
  * @param {string} url - Password reset endpoint path (e.g., '/auth/reset-password')
  * @param {ResetPasswordData} data - Password reset data
  * @param {string} data.token - Password reset token (from email)
@@ -102,7 +102,7 @@ export const login = async (api: AxiosInstance, url: string, credentials: LoginC
  * ```typescript
  * ```
  */
-export const reset = async (api: AxiosInstance, url: string, data: ResetPasswordData): Promise<LoginResponse> => {
+export const reset = async (api: ApiInstance, url: string, data: ResetPasswordData): Promise<LoginResponse> => {
     try {
         const response = await api.put<Auth>(url, data)
         setToken(response.data)
@@ -143,7 +143,7 @@ export const logout = () => {
  * Requires user to be authenticated (valid token in localStorage).
  * User must provide current password for verification.
  * 
- * @param {AxiosInstance} api - Configured Axios instance with authentication
+ * @param {ApiInstance} api - Configured API instance with authentication
  * @param {ChangePasswordData} data - Password change data
  * @param {string} data.currentPassword - Current password for verification
  * @param {string} data.newPassword - New password to set
@@ -172,7 +172,7 @@ export const logout = () => {
  * }
  * ```
  */
-export const changePassword = async (api: AxiosInstance, data: ChangePasswordData): Promise<{ success: boolean; errors?: ErrorMessage[] }> => {
+export const changePassword = async (api: ApiInstance, data: ChangePasswordData): Promise<{ success: boolean; errors?: ErrorMessage[] }> => {
     try {
         await api.put(`/user/changePassword`, data)
         return { success: true }

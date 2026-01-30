@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios'
+import { ApiInstance } from '../api/client'
 import { ErrorMessage } from '../types/error'
 import { Search } from '../types/request'
 import { fetchPage } from './api'
@@ -16,7 +16,7 @@ import { Page } from '../types/response'
 /**
  * Processes API response errors and converts to standardized format
  * 
- * @param {any} error - Axios error object from catch block
+ * @param {any} error - API error object from catch block
  * @returns {ErrorMessage[]} Array of formatted error messages with field and message properties
  * 
  * @internal This is a utility function used internally by CRUD operations
@@ -37,7 +37,7 @@ const addError = (error: any): ErrorMessage[] => {
  * Creates a new record in the API via POST request
  * 
  * @template T - Type of object to be created
- * @param {AxiosInstance} api - Configured Axios instance with authentication
+ * @param {ApiInstance} api - Configured API instance with authentication
  * @param {string} url - API endpoint path (without leading slash, e.g., 'users')
  * @param {T} object - Object data to be created
  * @returns {Promise<T | ErrorMessage[]>} Promise resolving to created data or array of errors
@@ -50,7 +50,7 @@ const addError = (error: any): ErrorMessage[] => {
  * const result = await create(api, 'users', { name: 'John Snow', email: 'john@example.com', role: 'USER' })
  * ```
  */
-export const create = async <T,>(api: AxiosInstance, url: string, object: T): Promise<T | ErrorMessage[]> => {
+export const create = async <T,>(api: ApiInstance, url: string, object: T): Promise<T | ErrorMessage[]> => {
     return await api.post(`/${url}`, object)
         .then(response => { return response.data })
         .catch(error => { return addError(error) })
@@ -60,7 +60,7 @@ export const create = async <T,>(api: AxiosInstance, url: string, object: T): Pr
  * Creates multiple records at once in the API via batch POST request
  * 
  * @template T - Type of objects to be created
- * @param {AxiosInstance} api - Configured Axios instance with authentication
+ * @param {ApiInstance} api - Configured API instance with authentication
  * @param {string} url - API endpoint path (without leading slash, e.g., 'users')
  * @param {T[]} object - Array of objects to be created
  * @returns {Promise<T | ErrorMessage[]>} Promise resolving to created data or array of errors
@@ -79,7 +79,7 @@ export const create = async <T,>(api: AxiosInstance, url: string, object: T): Pr
  * const result = await createAll(api, 'users', users)
  * ```
  */
-export const createAll = async <T,>(api: AxiosInstance, url: string, object: T[]): Promise<T | ErrorMessage[]> => {
+export const createAll = async <T,>(api: ApiInstance, url: string, object: T[]): Promise<T | ErrorMessage[]> => {
     return await api.post<T>(`/${url}/createAll`, object)
         .then(response => { return response.data })
         .catch(error => { return addError(error) })
@@ -97,7 +97,7 @@ export const createAll = async <T,>(api: AxiosInstance, url: string, object: T[]
  * - With sort: paginated and sorted search
  * 
  * @template T - Type of individual items in the response
- * @param {AxiosInstance} api - Configured Axios instance with authentication
+ * @param {ApiInstance} api - Configured API instance with authentication
  * @param {string} url - API endpoint path (without leading slash, e.g., 'users')
  * @param {Search} [search] - Optional search, pagination and sorting parameters
  * @param {number} [search.page] - Page number (zero-indexed)
@@ -135,7 +135,7 @@ export const createAll = async <T,>(api: AxiosInstance, url: string, object: T[]
  * const promise = retrieve(api, 'posts', { page: 0, size: 15 }, controller.signal)
  * ```
  */
-export const retrieve = async <T>(api: AxiosInstance, url: string, search?: Search, signal?: AbortSignal): Promise<Page<T> | ErrorMessage[]> => {
+export const retrieve = async <T>(api: ApiInstance, url: string, search?: Search, signal?: AbortSignal): Promise<Page<T> | ErrorMessage[]> => {
     try{
         return await fetchPage(api, url, search, signal)
     }catch(error) {
@@ -147,7 +147,7 @@ export const retrieve = async <T>(api: AxiosInstance, url: string, search?: Sear
  * Updates an existing record in the API via PUT request
  * 
  * @template T - Type of object to be updated
- * @param {AxiosInstance} api - Configured Axios instance with authentication
+ * @param {ApiInstance} api - Configured API instance with authentication
  * @param {string} url - API endpoint path (without leading slash, e.g., 'users')
  * @param {T} object - Updated object data (must include identifier)
  * @returns {Promise<T | ErrorMessage[]>} Promise resolving to response or array of errors
@@ -159,7 +159,7 @@ export const retrieve = async <T>(api: AxiosInstance, url: string, search?: Sear
  * const result = await update(api, 'users', { id: 1, name: 'John Silva' })
  * ```
  */
-export const update = async <T,>(api: AxiosInstance, url: string, object: T): Promise<T | ErrorMessage[]> => {
+export const update = async <T,>(api: ApiInstance, url: string, object: T): Promise<T | ErrorMessage[]> => {
     return await api.put<T>(`/${url}`, object)
         .then(response => { return response.data })
         .catch(error => { return addError(error) })
@@ -169,7 +169,7 @@ export const update = async <T,>(api: AxiosInstance, url: string, object: T): Pr
  * Removes a specific record from the API via DELETE request
  * 
  * @template T - Type of response
- * @param {AxiosInstance} api - Configured Axios instance with authentication
+ * @param {ApiInstance} api - Configured API instance with authentication
  * @param {string} url - API endpoint path (without leading slash, e.g., 'users')
  * @param {string} id - ID of the record to be removed
  * @returns {Promise<T | ErrorMessage[]>} Promise resolving to response or array of errors
@@ -181,7 +181,7 @@ export const update = async <T,>(api: AxiosInstance, url: string, object: T): Pr
  * const result = await remove(api, 'users', '123')
  * ```
  */
-export const remove = async <T,>(api: AxiosInstance, url: string, id: string) => {
+export const remove = async <T,>(api: ApiInstance, url: string, id: string) => {
     return await api.delete<T>(`/${url}/${id}`)
         .then(response => { return response.data })
         .catch(error => { return addError(error) })
@@ -191,7 +191,7 @@ export const remove = async <T,>(api: AxiosInstance, url: string, id: string) =>
  * Removes a record with composite key (multiple identifiers) via DELETE request
  * 
  * @template T - Type of response
- * @param {AxiosInstance} api - Configured Axios instance with authentication
+ * @param {ApiInstance} api - Configured API instance with authentication
  * @param {string} url - API endpoint path (without leading slash)
  * @param {Object} object - Object with additional data for deletion (if needed by backend)
  * @param {string} one - First identifier segment
@@ -208,7 +208,7 @@ export const remove = async <T,>(api: AxiosInstance, url: string, id: string) =>
  * const result = await removeComposite(api, 'user-roles', {}, 'user-123', 'role-admin', '', '')
   * ```
  */
-export const removeComposite = async <T,>(api: AxiosInstance, url: string, object: Object, one: string, two: string, three: string, four: string) => {
+export const removeComposite = async <T,>(api: ApiInstance, url: string, object: Object, one: string, two: string, three: string, four: string) => {
     if (three !== '' && four !== '') {
         return await api.delete<T>(`/${url}`, object)
             .then(response => { return response.data })
@@ -227,7 +227,7 @@ export const removeComposite = async <T,>(api: AxiosInstance, url: string, objec
  * Use with extreme caution and ensure this is the intended action.
  * 
  * @template T - Type of response
- * @param {AxiosInstance} api - Configured Axios instance with authentication
+ * @param {ApiInstance} api - Configured API instance with authentication
  * @param {string} url - API endpoint path (without leading slash)
  * @returns {Promise<T | ErrorMessage[]>} Promise resolving to response or array of errors
  * 
@@ -238,7 +238,7 @@ export const removeComposite = async <T,>(api: AxiosInstance, url: string, objec
  * const result = await removeAll(api, 'temp-data')
  * ```
  */
-export const removeAll = async <T,>(api: AxiosInstance, url: string) => {
+export const removeAll = async <T,>(api: ApiInstance, url: string) => {
     return await api.delete<T>(`/${url}`)
         .then(response => { return response.data })
         .catch(error => { return addError(error) })

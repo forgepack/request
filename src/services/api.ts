@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios'
+import { ApiInstance } from '../api/client'
 import { Page } from '../types/response'
 import { Search } from '../types/request'
 
@@ -12,7 +12,7 @@ import { Search } from '../types/request'
  * - Request cancellation via AbortSignal
  * - Automatic URL encoding for search values
  * 
- * @param {AxiosInstance} api - Configured Axios instance with authentication and base URL
+ * @param {ApiInstance} api - Configured API instance with authentication and base URL
  * @param {string} endpoint - API endpoint path (without leading slash, e.g., 'users' or 'posts')
  * @param {Search} [search] - Optional search, pagination and sorting parameters
  * @param {number} [search.page] - Page number (zero-indexed, default handled by backend)
@@ -24,7 +24,7 @@ import { Search } from '../types/request'
  * @param {AbortSignal} [signal] - Signal for request cancellation (from AbortController)
  * @returns {Promise<Page>} Promise resolving to paginated response data
  * 
- * @throws {AxiosError} When the HTTP request fails
+ * @throws {Error} When the HTTP request fails
  * @throws {Error} When request is aborted via signal
  * 
  * @example
@@ -52,7 +52,7 @@ import { Search } from '../types/request'
  * controller.abort()
  * ```
  */
-export const fetchPage = async <T,>(api: AxiosInstance, endpoint: string, search?: Search, signal?: AbortSignal): Promise<Page<T>> => {
+export const fetchPage = async <T,>(api: ApiInstance, endpoint: string, search?: Search, signal?: AbortSignal): Promise<Page<T>> => {
     /** Build base URI with optional search query */
     const uri = search?.value?.trim()
         ? `/${endpoint}?value=${encodeURIComponent(search.value)}`

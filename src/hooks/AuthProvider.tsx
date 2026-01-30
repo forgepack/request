@@ -3,15 +3,15 @@ import { getToken, isValidToken } from '../services/token'
 import { initialAuth } from '../utils/constants'
 import { Auth, LoginCredentials, LoginResponse } from '../types/auth'
 import { login, logout } from '../services/auth'
-import { AxiosInstance } from 'axios'
+import { ApiInstance } from '../api/client'
 import { AuthContext } from './AuthContext'
 
 /**
  * Properties of the AuthProvider
  */
 export type AuthProviderProps = {
-    /** Axios instance for requests */
-    api: AxiosInstance
+    /** API instance for requests */
+    api: ApiInstance
     /** Child components that will receive the context */
     children: React.ReactNode
 }

@@ -57,4 +57,4 @@ This package was developed to eliminate common boilerplate in React applications
 - React 18+
 - React Router DOM 6+
 - TypeScript (recommended)
-- Axios (included as dependency)
+- Native Fetch API (built into modern browsers)

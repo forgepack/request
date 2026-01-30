@@ -4,7 +4,7 @@ import { initialErrorMessage, initialPage } from '../utils/constants'
 import { Page } from '../types/response'
 import { Search } from '../types/request'
 import { fetchPage } from '../services/api'
-import { AxiosInstance } from 'axios'
+import { ApiInstance } from '../api/client'
 
 /**
  * Return type of the useRequest hook
@@ -30,7 +30,7 @@ export type UseRequestReturn = {
  * - Automatic re-execution when endpoint or search parameters change
  * - Request deduplication via AbortController
  * 
- * @param {AxiosInstance} api - Configured Axios instance with authentication
+ * @param {ApiInstance} api - Configured API instance with authentication
  * @param {string} endpoint - API endpoint path (without leading slash, e.g., 'users' or 'posts')
  * @param {Search} [search] - Optional search and pagination parameters
  * @param {number} [search.page] - Page number (zero-indexed)
@@ -59,7 +59,7 @@ export type UseRequestReturn = {
  * ```
  */
 
-export const useRequest = (api: AxiosInstance, endpoint: string, search?: Search): UseRequestReturn => {
+export const useRequest = (api: ApiInstance, endpoint: string, search?: Search): UseRequestReturn => {
 	const [response, setResponse] = useState<Page>(initialPage)
 	const [error, setError] = useState<ErrorMessage[]>([initialErrorMessage])
 	const [loading, setLoading] = useState<boolean>(false)
