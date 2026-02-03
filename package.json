@@ -54,7 +54,7 @@
     ],
     "scripts": {
         "build": "npm run clean && tsc",
-        "clean": "rmdir /s /q dist 2>nul || true",
+        "clean": "rimraf dist",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "peerDependencies": {
@@ -63,8 +63,7 @@
     },
     "devDependencies": {
         "@types/react": "^19.2.9",
+        "rimraf": "^6.1.2",
         "typescript": "^5.9.3"
-    },
-    "dependencies": {
     }
 }
